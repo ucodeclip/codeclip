@@ -1,31 +1,21 @@
 ---
 slug: post-1
-title: GatsbyJS と Netlify を使ったブログの作成
+title: GatsbyJS と Netlify を使った爆速サイトの作り方
 date: 2020-05-07
 tag:
   - GatsbyJS
   - Netlify
 ---
 
-## ブログを作りました。
+## ブログ作りました
 エンジニアはブログを書いた方がいいと聞いたので、暇潰しがてら、[GatsbyJS](https://www.gatsbyjs.org/)と[Netlify](https://www.netlify.com/)を使ってブログ作ってみました。  
-せっかくなのでブログ作りの備忘録を簡単に書いていこうと思います。
+最初の投稿として何を書こうか迷ったのですが、せっかくなのでGatsbyJSとNetlifyを使った【爆速サイトの公開】を簡単に書いていこうと思います。
 
-## 概要
-表題の通りですが、GatsbyJSで作り、Netlifyでホスティングしています。
-思いつきで作ったのであれですが、一応上記技術の選定理由としては、
-
-- 無料であること（ドメイン代は除く）
-- サーバーの管理が必要ないこと
-- デーダベースが必要ないこと
-
-になります。
-
-コンテンツの管理に関してはヘッドレスCMS（[Contentful](https://www.contentful.com/), [prismic](https://prismic.io/), [Netlify CMS](https://www.netlifycms.org/) etc...）を使用するかどうか悩んだのですが、後々に融通が効きそうなので、今回はローカルにマークダウンファイルを置くことにしました。
-またGitのホスティングサービスには[GitHub](https://github.co.jp/)を使用しました。
+## 大雑把に概要
+表題の通りですが、GatsbyJSで作り、Netlifyでホスティングします。
 
 ## GastbyJSのインストール
-なにはともあれ、gatsbyのインストール。
+なにはともあれ、GatsbyJSのインストール。
 
 ```bash:title=shell
 npm install -g gatsby-cli
@@ -44,7 +34,7 @@ Gatsby CLI version: 2.8.22
 Gatsby version: 2.21.20
 ```
 
-## ブログの作成
+## サイトの作成
 GatsbyJSには多くのスターターが用意されています。詳しくは[こちら](https://www.gatsbyjs.org/starters/?v=2)参照。
 
 ```bash:title=shell
@@ -65,6 +55,7 @@ npm run start
 
 `http://localhost:8000`にアクセスすると以下のような画面が表示されます。
 
+![開発サーバー](./image-1.png)
 
 開発用サーバーが確認できたら今度はプロジェクトをビルドします。
 ```bash:title=shell
@@ -80,21 +71,47 @@ npm run serve
 
 `http://localhost:9000`にアクセスすると開発用サーバーを立ち上げた時と同じ画面が表示されます。
 
-無事表示されればサイトの完成です。
+無事表示されればサイトの完成です。あとは自分でブログを作成して公開します。
 
 ## NetlifyとGitの連携
-Github,GitLab,Bitbucketなどのgitホスティングサービスを使ってリポジトリを作りましょう。（Gitに関しては割愛）
+ブログを作成したらNetlifyで公開しましょう。
 
-リポジトリを作成したら今のプロジェクトをプッシュして、[Netlify](https://www.netlify.com/)と連携します。Sign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
+
+まずはGithub,GitLab,Bitbucketなどのgitホスティングサービスを使ってリポジトリを作ります。（Gitに関しては割愛）
+
+リポジトリを作成したらプロジェクトをコミットして、[Netlify](https://www.netlify.com/)と連携します。Netlifyのサイトに飛んだらSign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
+
+![登録画面](./image-2.jpg)
 
 管理画面にログインしたらあとは連携するだけです。`New site from Git`をクリックして、表示される指示に沿ってポチポチ。
 
+![登録画面](./image-3.png)
+
+![登録画面](./image-4.png)
 
 - Build commandに`gatsby build`
 - Publish directoryに`public/`
 
 を入力します。
 
+![登録画面](./image-5.png)
+
 `Deploy site`をクリックでサイトのデプロイが始まります。
 
 ## 公開の確認
+
+Deployが完成したらOverviewから公開サイトのURLが確認できます。
+
+![管理画面](./image-6.jpg)
+
+これで無事サイトが公開されました。
+
+## サイトの更新
+登録しているブランンチにコミット、マージなどで変更があると自動的にデプロイが走ります。便利ですね。
+
+## まとめ
+簡単にサイトを作成、公開することができました。時間としても上記手順だけなら一時間もいらないと思います。爆速サイト公開ですね。  
+今回はただサイトの公開ということで、更新性のあるブログの作り方までには触れなかったのですが、今後どこかでマークダウンファイルを使ったブログの作り方に関しても書いていこうと思います。
+
+## 参考
+[Gatsby Quick Start](https://www.gatsbyjs.org/docs/quick-start)

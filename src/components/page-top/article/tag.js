@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+//import { Link } from "gatsby"
 import styled from "styled-components"
 import { calcSpVw } from '../../../styles/styled-function'
 
@@ -23,7 +23,7 @@ const TagItem = styled.li`
     margin-bottom: 0;
   }
 `
-const TagLink = styled(Link)`
+const TagLink = styled.div`
   position: relative;
   z-index: 10;
   display: block;

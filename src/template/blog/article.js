@@ -92,10 +92,6 @@ const Date = styled.div`
 `
 
 const ArticleBody = styled.div`
-  a {
-    color: #4ab4fc;
-    text-decoration: underline
-  }
   .language-text {
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -153,6 +149,24 @@ const ArticleBody = styled.div`
     .gatsby-resp-image-wrapper {
       margin-bottom: 40px;
     }
+    a {
+      position: relative;
+      color: #4ab4fc;
+      cursor: pointer;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 1px;
+        bottom: 0;
+        background: #4ab4fc;
+      }
+      &:hover {
+        &::before {
+          opacity: 0
+        }
+      }
+    }
   }
   @media screen and (max-width:812px) {
     margin-top: ${calcSpVw(100)};
@@ -190,9 +204,10 @@ const ArticleBody = styled.div`
     }
     .gatsby-code-title {
       display: inline-block;
-      margin-top:     .gatsby-resp-image-wrapper {
+      margin-top: 20px;
       margin-bottom: 40px;
     }
+    .gatsby-resp-image-wrapper {
       margin-bottom: -.5rem;
       padding: .2em .5em;
       border-radius: ${calcSpVw(4)} ${calcSpVw(4)} 0 0;
@@ -203,6 +218,10 @@ const ArticleBody = styled.div`
     }
     .gatsby-resp-image-wrapper {
       margin-bottom: ${calcSpVw(80)};
+    }
+    a {
+      color: #4ab4fc;
+      text-decoration: underline;
     }
   }
 `
