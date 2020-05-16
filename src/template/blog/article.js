@@ -203,11 +203,8 @@ const ArticleBody = styled.div`
       }
     }
     .gatsby-code-title {
-      display: inline-block;
-      margin-top: 20px;
-      margin-bottom: 40px;
-    }
-    .gatsby-resp-image-wrapper {
+      display:inline-block;
+      margin-top: ${calcSpVw(40)};
       margin-bottom: -.5rem;
       padding: .2em .5em;
       border-radius: ${calcSpVw(4)} ${calcSpVw(4)} 0 0;
