@@ -86,7 +86,7 @@ npm run serve
 ## NetlifyとGitの連携
 Github,GitLab,Bitbucketなどのgitホスティングサービスを使ってリポジトリを作りましょう。（Gitに関しては割愛）
 
-リポジトリを作成したら[Netlify](https://www.netlify.com/)と連携します。Sign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
+リポジトリを作成したら今のプロジェクトをプッシュして、[Netlify](https://www.netlify.com/)と連携します。Sign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
 
 ![登録画面](./image-2.jpg)
 
