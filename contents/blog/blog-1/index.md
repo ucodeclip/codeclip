@@ -1,7 +1,7 @@
 ---
 slug: post-1
 title: GatsbyJS と Netlify を使った爆速サイトの作り方
-date: 2020-05-07
+date: 2020-05-16
 tag:
   - GatsbyJS
   - Netlify
