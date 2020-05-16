@@ -44,14 +44,7 @@ module.exports = {
         name: `blog`,
         path: `${__dirname}/contents/blog`
       }
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `image`,
-        path: `${__dirname}/src/images`
-      }
-    },
+    }
     `gatsby-plugin-styled-components`,
     // {
     //   resolve: `gatsby-plugin-manifest`,
