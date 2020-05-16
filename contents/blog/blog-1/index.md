@@ -41,7 +41,7 @@ GatsbyJSには多くのスターターが用意されています。詳しくは
 gatsby new codeclip https://github.com/gatsbyjs/gatsby-starter-default
 ```
 
-ブログ用のスターターもあるのですが、今回はデフォルトスターターを選択しました。`codeclip`の部分には作成するプロジェクトの名前、`https://github.com/gatsbyjs/gatsby-starter-default`の部分には自分で選んだスターターのurlを設定します。ちなみにデフォルトスターターの場合はurlの省略可能です。
+スターターは多くあるのですが、今回はデフォルトスターターを選択しました。`codeclip`の部分には作成するプロジェクトの名前、`https://github.com/gatsbyjs/gatsby-starter-default`の部分には自分で選んだスターターのurlを設定します。ちなみにデフォルトスターターの場合はurlの省略可能です。
 
 サイトを作成したらディレクトリを移動し、
 ```bash:title=shell
@@ -71,12 +71,9 @@ npm run serve
 
 `http://localhost:9000`にアクセスすると開発用サーバーを立ち上げた時と同じ画面が表示されます。
 
-無事表示されればサイトの完成です。あとは自分でブログを作成して公開します。
+無事表示されればサイトの完成です。
 
 ## NetlifyとGitの連携
-ブログを作成したらNetlifyで公開しましょう。
-
-
 まずはGithub,GitLab,Bitbucketなどのgitホスティングサービスを使ってリポジトリを作ります。（Gitに関しては割愛）
 
 リポジトリを作成したらプロジェクトをコミットして、[Netlify](https://www.netlify.com/)と連携します。Netlifyのサイトに飛んだらSign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
