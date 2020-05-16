@@ -26,6 +26,11 @@ const Seo = (props) => {
         },
         {
           name: 'og:site_name', content: 'Code Clip Blog'
+        },
+        {
+          name: 'google-site-verification',
+          content:
+            'H9iRfK03WwB_7J-ijEMiAkby71EmS1ejxlW1wYWyoSo',
         }
       ]}
     />

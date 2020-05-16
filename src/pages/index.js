@@ -21,13 +21,6 @@ const IndexPage = (props) => {
         title="Code Clop Blog"
         description="フロントエンドエンジニアの雑記帳"
         type="website"
-        meta={[
-          {
-            name: 'google-site-verification',
-            content:
-              'H9iRfK03WwB_7J-ijEMiAkby71EmS1ejxlW1wYWyoSo',
-          }
-        ]}
       />
       <MainVisual />
       <Main>
