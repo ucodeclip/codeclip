@@ -65,7 +65,6 @@ npm run start
 
 `http://localhost:8000`にアクセスすると以下のような画面が表示されます。
 
-![開発サーバー](./image-1.png)
 
 開発用サーバーが確認できたら今度はプロジェクトをビルドします。
 ```bash:title=shell
@@ -88,20 +87,13 @@ Github,GitLab,Bitbucketなどのgitホスティングサービスを使ってリ
 
 リポジトリを作成したら今のプロジェクトをプッシュして、[Netlify](https://www.netlify.com/)と連携します。Sign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
 
-![登録画面](./image-2.jpg)
-
 管理画面にログインしたらあとは連携するだけです。`New site from Git`をクリックして、表示される指示に沿ってポチポチ。
 
-![登録画面](./image-3.png)
-
-![登録画面](./image-4.png)
 
 - Build commandに`gatsby build`
 - Publish directoryに`public/`
 
 を入力します。
-
-![登録画面](./image-5.png)
 
 `Deploy site`をクリックでサイトのデプロイが始まります。
 
