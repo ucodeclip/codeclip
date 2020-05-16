@@ -25,6 +25,7 @@ const Article = styled.article`
     }
   }
   @media screen and (max-width:812px) {
+    box-shadow: 0 0 ${calcSpVw(10)} rgba(0,0,0,.2);
     padding: ${calcSpVw(40)};
     border-radius: ${calcSpVw(6)};
     &:nth-child(n + 2){
