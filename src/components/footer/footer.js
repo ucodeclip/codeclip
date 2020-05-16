@@ -12,7 +12,7 @@ const Footer = styled.footer`
 `
 const FooterInner = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   box-sizing:border-box;
@@ -23,15 +23,6 @@ const FooterInner = styled.div`
   @media screen and (max-width:812px) {
     height: ${calcSpVw(120)};
     padding: 0 5%;
-  }
-`
-const FooterBlock = styled.p`
-  color: #fffffe;
-  @media screen and (min-width:813px) {
-    font-size: 14px;
-  }
-  @media screen and (max-width:812px) {
-    font-size: ${calcSpVw(28)}
   }
 `
 
@@ -49,7 +40,6 @@ const FooterModule = () => {
   return(
     <Footer>
       <FooterInner>
-        <FooterBlock>Code Clip Blog</FooterBlock>
         <FooterCopy>&copy; 2020 CodeClip</FooterCopy>
       </FooterInner>
     </Footer>
