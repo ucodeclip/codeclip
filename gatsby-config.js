@@ -44,17 +44,8 @@ module.exports = {
         name: `blog`,
         path: `${__dirname}/contents/blog`
       }
-    }
+    },
     `gatsby-plugin-styled-components`,
-    // {
-    //   resolve: `gatsby-plugin-manifest`,
-    //   options: {
-    //     name: `codeclip`,
-    //     short_name: `codeclip`,
-    //     start_url: `/`,
-    //     //icon: `src/images/favicon.png`, // This path is relative to the root of the site.
-    //   },
-    // },
     `gatsby-plugin-sass`
   ]
 }
