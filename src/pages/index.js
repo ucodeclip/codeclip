@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 import Layout from "../components/layout/layout";
 import SEO from "../components/seo/seo"
+import Image from "../components/image/image"
 import MainVisual from "../components/page-top/mainVisual/mainVisual";
 import Article from "../components/page-top/article/article-wrap"
 
@@ -32,7 +33,9 @@ const IndexPage = (props) => {
 
 export const query = graphql`
   query indexQuery {
-    allMarkdownRemark (sort: {fields: frontmatter___date, order: DESC}){
+    allMarkdownRemark (
+      sort: {fields: id, order: ASC}
+      ) {
       edges {
         node {
           excerpt(pruneLength: 200)

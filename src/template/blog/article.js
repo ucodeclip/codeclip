@@ -8,11 +8,11 @@ import Tag from "../../components/page-blog-article/tag"
 import Pager from "../../components/page-blog-article/pager"
 
 const Main = styled.main`
-  padding: 100px 0 60px;
-  min-height: calc(100vh - 60px);
   box-sizing: border-box;
   background: #f9f9f9;
   @media screen and (min-width:813px) {
+    padding: 100px 0 60px;
+    min-height: calc(100vh - 60px);
     &::before {
       content: "";
       position: absolute;
@@ -24,6 +24,8 @@ const Main = styled.main`
     }
   }
   @media screen and (max-width:812px) {
+    padding: ${calcSpVw(120)} 0 ${calcSpVw(60)};
+    min-height: calc(100vh - ${calcSpVw(60)});
     &::before {
       content: "";
       position: absolute;
@@ -90,6 +92,17 @@ const Date = styled.div`
 `
 
 const ArticleBody = styled.div`
+  a {
+    color: #4ab4fc;
+    text-decoration: underline
+  }
+  .language-text {
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
   @media screen and (min-width:813px) {
     margin-top: 50px;
     font-size: 16px;
@@ -126,6 +139,20 @@ const ArticleBody = styled.div`
         }
       }
     }
+    .gatsby-code-title {
+      display: inline-block;
+      margin-top: 20px;
+      margin-bottom: -.5rem;
+      padding: .2em .5em;
+      border-radius: 2px 2px 0 0;
+      background-color: #FCA451;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-size: .8em;
+      color: #fff;
+    }
+    .gatsby-resp-image-wrapper {
+      margin-bottom: 40px;
+    }
   }
   @media screen and (max-width:812px) {
     margin-top: ${calcSpVw(100)};
@@ -160,6 +187,22 @@ const ArticleBody = styled.div`
           background:#ddd;
         }
       }
+    }
+    .gatsby-code-title {
+      display: inline-block;
+      margin-top:     .gatsby-resp-image-wrapper {
+      margin-bottom: 40px;
+    }
+      margin-bottom: -.5rem;
+      padding: .2em .5em;
+      border-radius: ${calcSpVw(4)} ${calcSpVw(4)} 0 0;
+      background-color: #FCA451;
+      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+      font-size: .8em;
+      color: #fff;
+    }
+    .gatsby-resp-image-wrapper {
+      margin-bottom: ${calcSpVw(80)};
     }
   }
 `
@@ -199,7 +242,9 @@ const BlogArticlePage = (props) => {
 
 export const query = graphql`
   query blogQuery ($id: String!, $number: Int) {
-    allMarkdownRemark (sort:{fields: frontmatter___date, order: DESC}, limit: 1, skip: $number) {
+    allMarkdownRemark (
+      sort:{fields: frontmatter___date, order: DESC}, limit: 1, skip: $number
+      ) {
       pageInfo {
         currentPage
         hasNextPage
