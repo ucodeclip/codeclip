@@ -5,6 +5,7 @@ import { calcSpVw } from '../../styles/styled-function'
 import Layout from "../../components/layout/layout";
 import SEO from "../../components/seo/seo"
 import Tag from "../../components/page-blog-article/tag"
+import Date from "../../components/page-blog-article/date"
 import Pager from "../../components/page-blog-article/pager"
 
 const Main = styled.main`
@@ -70,24 +71,6 @@ const Title = styled.h1`
   }
   @media screen and (max-width:812px) {
     font-size: ${calcSpVw(50)}
-  }
-`
-const Info = styled.div`
-  @media screen and (min-width:813px) {
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
-  }
-  @media screen and (max-width:812px) {
-    margin-top: ${calcSpVw(30)};
-  }
-`
-const Date = styled.div`
-  @media screen and (min-width:813px) {
-    font-size: 14px;
-  }
-  @media screen and (max-width:812px) {
-    font-size: ${calcSpVw(28)};
   }
 `
 
@@ -203,7 +186,7 @@ const ArticleBody = styled.div`
       }
     }
     .gatsby-code-title {
-      display:inline-block;
+      display: inline-block;
       margin-top: ${calcSpVw(40)};
       margin-bottom: -.5rem;
       padding: .2em .5em;
@@ -243,10 +226,8 @@ const BlogArticlePage = (props) => {
         <Article>
           <ArticleHead>
             <Title>{title}</Title>
-            <Info>
-              <Date>{date}</Date>
-              <Tag tag={tag} />
-            </Info>
+            <Date date={date} />
+            <Tag tag={tag} />
           </ArticleHead>
           <ArticleBody dangerouslySetInnerHTML={{ __html: htmlContents }}></ArticleBody>
         </Article>

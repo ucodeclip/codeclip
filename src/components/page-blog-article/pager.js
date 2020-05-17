@@ -3,20 +3,21 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { calcSpVw } from '../../styles/styled-function'
 
-const PagerList = styled.div`
+const PagerList = styled.ul`
   display: flex;
   justify-content: center;
   position: relative;
+  width: 90%;
+  box-sizing: border-box;
   @media screen and (min-width:813px) {
     max-width: 1000px;
-    width: 90%;
     margin: 30px auto 0;
   }
   @media screen and (max-width:812px) {
-    margin-top: ${calcSpVw(60)}
+    margin: ${calcSpVw(60)} auto 0;
   }
 `
-const PagerItem = styled.div`
+const PagerItem = styled.li`
   ${(props) => {
     if(props.pos === "center"){
       return ({position: "relative"});
@@ -44,13 +45,14 @@ const PagerLink = styled(Link)`
 
 const PagerModule = (props) => {
   return (
+
     <PagerList>
       {
-        props.pageInfo.hasPreviousPage ? <PagerItem pos="left"><PagerLink to={props.pageContext.prevPath}>前の記事</PagerLink></PagerItem> : ""
+        props.pageInfo.hasNextPage ? <PagerItem pos="left"><PagerLink to={props.pageContext.nextPath}>前の記事</PagerLink></PagerItem> : ""
       }
       <PagerItem pos="center"><PagerLink to="/">TOPへ戻る</PagerLink></PagerItem>
       {
-        props.pageInfo.hasNextPage ? <PagerItem pos="right"><PagerLink to={props.pageContext.nextPath}>次の記事</PagerLink></PagerItem> : ""
+        props.pageInfo.hasPreviousPage ? <PagerItem pos="right"><PagerLink to={props.pageContext.prevPath}>次の記事</PagerLink></PagerItem> : ""
       }
     </PagerList>
   )
