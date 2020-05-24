@@ -45,8 +45,8 @@ tag:
 ```js:title=gatsby-node.js
 exports.createPages = async ({ graphql }) => {
   //groupを使用してtagを抽出するクエリ
-  const categoriesResult = await graphql(`
-    query categoriesQuery {
+  const tagsResult = await graphql(`
+    query tagsQuery {
       allMarkdownRemark {
         group(field: frontmatter___tag) {
           fieldValue
@@ -89,7 +89,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   //groupを使用してtagを抽出するクエリ
   const tagsResult = await graphql(`
-    query categoriesQuery {
+    query tagsQuery {
       allMarkdownRemark {
         group(field: frontmatter___tag) {
           fieldValue
