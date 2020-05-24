@@ -1,5 +1,5 @@
 import React from "react"
-//import {Link} from "gatsby"
+import {Link} from "gatsby"
 import styled from "styled-components"
 import { calcSpVw } from '../../styles/styled-function'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -40,7 +40,7 @@ const TagItem = styled.li`
     margin-bottom: 0;
   }
 `
-const TagLink = styled.div`
+const TagLink = styled(Link)`
   position: relative;
   z-index: 10;
   display: block;
@@ -84,8 +84,9 @@ const TagModule = (props) => {
       <FontAwesomeIcon icon={faTags} />
       <TagList>
         {tagArray.map((v ,i)=>{
+          const slug = '/blog/tags/' + v;
           return (
-            <TagItem key={i}><TagLink to={v}>{v}</TagLink></TagItem>
+            <TagItem key={i}><TagLink to={slug}>{v}</TagLink></TagItem>
           )
         })}
       </TagList>

@@ -2,6 +2,7 @@
 slug: post-1
 title: GatsbyJS と Netlify を使った爆速サイトの作り方
 date: 2020-05-16
+update: 2020-05-16
 tag:
   - GatsbyJS
   - Netlify
@@ -11,7 +12,7 @@ tag:
 エンジニアはブログを書いた方がいいと聞いたので、暇潰しがてら、[GatsbyJS](https://www.gatsbyjs.org/)と[Netlify](https://www.netlify.com/)を使ってブログ作ってみました。  
 最初の投稿として何を書こうか迷ったのですが、せっかくなのでGatsbyJSとNetlifyを使った【爆速サイトの公開】を簡単に書いていこうと思います。
 
-## 大雑把に概要
+## 概要
 表題の通りですが、GatsbyJSで作り、Netlifyでホスティングします。とりあえず公開するだけなら基本無料なので、安心です。
 
 ## GastbyJSのインストール
@@ -55,7 +56,7 @@ npm run start
 
 `http://localhost:8000`にアクセスすると以下のような画面が表示されます。
 
-![開発サーバー](./image-1.png)
+![開発サーバー](image-1.png)
 
 開発用サーバーが確認できたら今度はプロジェクトをビルドします。
 ```bash:title=shell
@@ -78,20 +79,20 @@ npm run serve
 
 リポジトリを作成したらプロジェクトをコミットして、[Netlify](https://www.netlify.com/)と連携します。Netlifyのサイトに飛んだらSign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
 
-![登録画面](./image-2.jpg)
+![登録画面](image-2.jpg)
 
 管理画面にログインしたらあとは連携するだけです。`New site from Git`をクリックして、表示される指示に沿ってポチポチ。
 
-![登録画面](./image-3.png)
+![登録画面](image-3.png)
 
-![登録画面](./image-4.png)
+![登録画面](image-4.png)
 
 - Build commandに`gatsby build`
 - Publish directoryに`public/`
 
 を入力します。
 
-![登録画面](./image-5.png)
+![登録画面](image-5.png)
 
 `Deploy site`をクリックでサイトのデプロイが始まります。
 
@@ -99,7 +100,7 @@ npm run serve
 
 Deployが完成したらOverviewから公開サイトのURLが確認できます。
 
-![管理画面](./image-6.jpg)
+![管理画面](image-6.jpg)
 
 これで無事サイトが公開されました。
 

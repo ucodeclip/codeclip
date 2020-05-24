@@ -212,8 +212,10 @@ const BlogArticlePage = (props) => {
   const htmlContents = props.data.markdownRemark.html;
   const title = props.data.markdownRemark.frontmatter.title;
   const date = props.data.markdownRemark.frontmatter.date;
+  const update = props.data.markdownRemark.frontmatter.update;
   const tag = props.data.markdownRemark.frontmatter.tag;
   const excerpt = props.data.markdownRemark.excerpt;
+  const path = props.path;
 
   return (
     <Layout page="blog-article">
@@ -221,12 +223,13 @@ const BlogArticlePage = (props) => {
         title={title}
         description={excerpt}
         type="article"
+        path={path}
       />
       <Main>
         <Article>
           <ArticleHead>
             <Title>{title}</Title>
-            <Date date={date} />
+            <Date date={date} update={update} />
             <Tag tag={tag} />
           </ArticleHead>
           <ArticleBody dangerouslySetInnerHTML={{ __html: htmlContents }}></ArticleBody>
@@ -253,6 +256,7 @@ export const query = graphql`
     markdownRemark(id: {eq: $id}) {
       frontmatter {
         date(formatString: "YYYY-MM-DD")
+        update(formatString: "YYYY-MM-DD")
         slug
         tag
         title
