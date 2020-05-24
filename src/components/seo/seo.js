@@ -2,7 +2,7 @@ import React from "react";
 import Helmet from "react-helmet"
 
 const Seo = (props) => {
-  const title = props.title;
+  const title = props.title === "Code Clop Blog" ? props.title : props.title + " | Code Clip Blog";
   const description = props.description;
   const type = props.type;
   return (
