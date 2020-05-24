@@ -2,9 +2,10 @@ import React from "react";
 import Helmet from "react-helmet"
 
 const Seo = (props) => {
-  const title = props.title;
-  const description = props.description;
   const type = props.type;
+  const title = type === "website" ? props.title : props.title + " | Code Clip Blog";
+  const description = props.description;
+  const url = "https://codeclip.netlify.app" + props.path;
   return (
     <Helmet
       title={title}
@@ -26,6 +27,14 @@ const Seo = (props) => {
         },
         {
           name: 'og:site_name', content: 'Code Clip Blog'
+        },
+        {
+          name: 'og:url', content: url
+        },
+        {
+          name: 'google-site-verification',
+          content:
+            'H9iRfK03WwB_7J-ijEMiAkby71EmS1ejxlW1wYWyoSo',
         }
       ]}
     />

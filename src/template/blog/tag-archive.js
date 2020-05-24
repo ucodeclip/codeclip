@@ -1,10 +1,10 @@
 import React from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
-import Layout from "../components/layout/layout";
-import SEO from "../components/seo/seo"
-import MainVisual from "../components/page-top/mainVisual/mainVisual";
-import Article from "../components/archive/article/article-wrap"
+import Layout from "../../components/layout/layout";
+import SEO from "../../components/seo/seo"
+import MainVisual from "../../components/tag-archive/main-visual/main-visual";
+import Article from "../../components/archive/article/article-wrap"
 
 const Main = styled.div`
   position:relative;
@@ -14,16 +14,18 @@ const Main = styled.div`
   @media screen and (max-width:812px) {
   }
 `
-const IndexPage = (props) => {
+const TagArchivePage = (props) => {
+  const tag = props.pageContext.tag;
+  const title = tag + '一覧'
   return (
-    <Layout page="top">
+    <Layout page="tag-archive">
       <SEO
-        title="Code Clop Blog"
+        title={title}
         description="フロントエンドエンジニアの雑記帳"
-        type="website"
+        type="article"
       />
-      <MainVisual />
       <Main>
+        <MainVisual tag={tag} />
         <Article data={props.data} />
       </Main>
     </Layout>
@@ -31,9 +33,10 @@ const IndexPage = (props) => {
 }
 
 export const query = graphql`
-  query indexQuery {
+  query tagArchiveQuery($tag: String) {
     allMarkdownRemark (
       sort: {fields: frontmatter___date, order: DESC}
+      filter: {frontmatter: {tag: {eq: $tag}}}
       ) {
       edges {
         node {
@@ -50,4 +53,4 @@ export const query = graphql`
   }
 `
 
-export default IndexPage
+export default TagArchivePage

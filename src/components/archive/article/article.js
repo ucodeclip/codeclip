@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { calcSpVw } from '../../../styles/styled-function'
 import Tag from "./tag"
+import Date from "./date.js"
 
 const Article = styled.article`
   position: relative;
@@ -18,7 +19,7 @@ const Article = styled.article`
     box-sizing: border-box;
     transition: all .3s ease-out;
     &:nth-child(n + 2){
-      margin-top: 40px;
+      margin-top: 20px;
     }
     &:hover {
       opacity: .6;
@@ -29,7 +30,7 @@ const Article = styled.article`
     padding: ${calcSpVw(40)};
     border-radius: ${calcSpVw(6)};
     &:nth-child(n + 2){
-      margin-top: ${calcSpVw(80)};
+      margin-top: ${calcSpVw(40)};
     }
   }
 `
@@ -37,11 +38,9 @@ const ArticleTitle = styled.h2`
   color: inherit;
   font-weight: bold;
   @media screen and (min-width:813px) {
-    margin-top: 15px;
     font-size: 22px;
   }
   @media screen and (max-width:812px) {
-    margin-top: ${calcSpVw(30)};
     font-size: ${calcSpVw(44)};
   }
 `
@@ -52,17 +51,6 @@ const ArticleText = styled.p`
   }
   @media screen and (max-width:812px) {
     margin-top: ${calcSpVw(20)};
-  }
-`
-const Date = styled.div`
-  color: inherit;
-  @media screen and (min-width:813px) {
-    margin-top: 15px;
-    font-size: 14px;
-  }
-  @media screen and (max-width:812px) {
-    margin-top: ${calcSpVw(30)};
-    font-size: ${calcSpVw(28)};
   }
 `
 const ArticleLink = styled(Link)`
@@ -85,10 +73,10 @@ const ArticleModule = (props) => {
   return (
     <Article>
       <ArticleLink to={slug}></ArticleLink>
-      <Tag content={props.content.node.frontmatter.tag} />
       <ArticleTitle>{props.content.node.frontmatter.title}</ArticleTitle>
       <ArticleText>{props.content.node.excerpt}</ArticleText>
-      <Date>{props.content.node.frontmatter.date}</Date>
+      <Date date={props.content.node.frontmatter.date} />
+      <Tag content={props.content.node.frontmatter.tag} />
     </Article>
   )
 }
