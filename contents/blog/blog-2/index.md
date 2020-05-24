@@ -11,7 +11,7 @@ tag:
 GatsbyJSでタグ機能を実装したので、その手順をメモします。
 
 ## 前提
-- 記事の一覧をgraphQLから取得できる
+- 記事の一覧をGraphQLから取得できる
 - `gatsby-transformer-remark`のプラグインでmd(マークダウン)ファイルを使用している
 
 ## md（マークダウン）ファイルにtagの項目を作る
@@ -19,7 +19,7 @@ md（マークダウン）ファイルの最初の部分にメタ情報として
 ちなみにこのメタ情報のブロックのことを`Front-matter`と言うらしいです.  
 
 今回はタグ一覧ページで絞り込みができているか確認するためmd（マークダウン）ファイルを二つ作成します。  
-タグが複数ある場合は下記のように入力するとtagが配列で返ってきます。
+タグが複数ある場合は下記のように記述します。
 
 ```yaml:title=index.md
 ---
@@ -39,7 +39,7 @@ tag:
 ---
 ```
 
-## tagの抽出
+## タグの抽出
 まずはGraphQLのgroup機能を使ってmd（マークダウン）ファイルに記述してあるタグを全て抽出します。
 
 ```js:title=gatsby-node.js
@@ -59,7 +59,7 @@ exports.createPages = async ({ graphql }) => {
 }
 ```
 
-gatyby-nodeに上の記述を行ってからbuildをすると、
+gatsyby-nodeに上の記述を行ってからbuildをすると、
 
 ```json:title=shell
 {
@@ -75,11 +75,11 @@ gatyby-nodeに上の記述を行ってからbuildをすると、
 }
 ```
 
-tagの配列が返ってきてることがわかります。
+タグの配列が返ってきてることがわかります。
 
 ## gatsby-nodeを使用してタグの一覧ページを作る
 gatsby-node.jsを使用してタグの一覧ページを作っていきます。  
-抽出したタグからcreatePageを使ってページをタグごとの一覧ペーを作成します。
+抽出したタグからcreatePageを使ってページをタグごとの一覧ページを作成します。
 
 ```js:title=gatsby-node.js
 const path = require('path')
@@ -144,7 +144,7 @@ const ArchivePage = (props) => {
   )
 }
 
-//filterでcontextから受け取ったtagの絞り込みをする
+//contextで受け取ったtagを使用して、filterで絞り込みをする
 export const query = graphql`
   query ArchiveQuery($tag: String) {
     allMarkdownRemark (
@@ -164,7 +164,7 @@ export const query = graphql`
 export default ArchivePage
 ```
 
-ここまで記入したら、開発サーバーを立ち上げ  
+ここまで記述したら、開発サーバーを立ち上げ  
 
 `http://localhost:8000/blog/tags/TagA`  
 `http://localhost:8000/blog/tags/TagB`  
@@ -178,5 +178,5 @@ export default ArchivePage
 タグで絞り込んだ記事タイトル一覧が表示されていれば完成です。
 
 ## まとめ
-gatsby-nodeとgraphQLのgroup機能を使うことによって簡単にタグ機能の実装ができました。  
+gatsby-nodeとGraphQLのgroup機能を使うことによって簡単にタグ機能の実装ができました。  
 カテゴリ機能も同様な感じで実装できると思います。
