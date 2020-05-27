@@ -18,7 +18,7 @@ const IndexPage = (props) => {
   return (
     <Layout page="top">
       <SEO
-        title="Code Clop Blog"
+        title="Code Clip Blog"
         description="フロントエンドエンジニアの雑記帳"
         type="website"
       />
