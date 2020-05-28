@@ -39,7 +39,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-images`,
             options: {
-              maxWidth: 1000,
+              maxWidth: 1200,
               linkImagesToOriginal: true
             },
           }
@@ -51,6 +51,13 @@ module.exports = {
       options: {
         name: `blog`,
         path: `${__dirname}/contents/blog`
+      }
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `image`,
+        path: `${__dirname}/src/images`
       }
     },
     `gatsby-plugin-styled-components`,
