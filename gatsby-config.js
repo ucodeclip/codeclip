@@ -2,8 +2,10 @@ module.exports = {
   siteMetadata: {
     title: `Code Clip Blog`,
     description: `フロントエンドエンジニアの雑記帳`,
+    siteUrl: `https://codeclip.netlify.app/`,
   },
   plugins: [
+    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     {
