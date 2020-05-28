@@ -1,11 +1,14 @@
 import React from "react";
+import { useStaticQuery, graphql } from "gatsby"
 import Helmet from "react-helmet"
 
 const Seo = (props) => {
+  const { allImageSharp } = useStaticQuery(query)
   const type = props.type;
   const title = type === "website" ? props.title : props.title + " | Code Clip Blog";
   const description = props.description;
   const url = "https://codeclip.netlify.app" + props.path;
+  const img = "https://codeclip.netlify.app" + allImageSharp.edges[0].node.fixed.src;
   return (
     <Helmet
       title={title}
@@ -21,6 +24,9 @@ const Seo = (props) => {
         },
         {
           name: 'og:description', content: description
+        },
+        {
+          name: 'og:image', content: img
         },
         {
           name: 'og:type', content: type
@@ -40,5 +46,19 @@ const Seo = (props) => {
     />
   )
 }
+
+export const query = graphql`
+  query OGP {
+    allImageSharp(filter: {fixed: {originalName: {eq: "ogp.png"}}}) {
+      edges {
+        node {
+          fixed(width: 1200) {
+            src
+          }
+        }
+      }
+    }
+  }
+`
 
 export default Seo
