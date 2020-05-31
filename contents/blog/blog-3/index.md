@@ -192,6 +192,6 @@ export default Demo2
 [スクロールアニメーションのデモページはこちら](https://codeclip.netlify.app/demo/demo-1/index-2)
 
 ## まとめ
-当たり前ですが、GatsbyJSではページ遷移でリロードが生じないので、マウント時にスクロールイベントの登録を行います。 
-その際に`removeEventListener()`でイベントの削除記述も忘れないようにしたいですね。
+当たり前ですが、GatsbyJSではページ遷移でリロードが生じないので、マウント時にスクロールイベントの登録を行います。  
+その際に`removeEventListener()`でイベントの削除記述も忘れないようにしたいですね。  
 IntersectionObserverを使ったスクロールアニメーションに関してはまた後日書いていこうと思います。
