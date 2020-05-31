@@ -5,7 +5,7 @@ import "./index.scss"
 
 
 const Demo2 = () => {
-  const [scrollMout, setScrollMount] = useState(0);
+  const [scrollMount, setScrollMount] = useState(0);
   const [targetDomList, setTargetDomList] = useState([]);
 
   const getScroll = () => {
@@ -21,21 +21,12 @@ const Demo2 = () => {
     const targets = document.getElementsByClassName('scroll')
     const targetArray = Array.from(targets);
     setTargetDomList(targetArray);
-    setTimeout(() => {
-      targetArray.forEach((v)=>{
-        const targetPosTop = v.getBoundingClientRect().top　+ window.pageYOffset;
-        if( scrollMout > targetPosTop - window.innerHeight + 300){
-          v.classList.add('show')
-        }
-      })
-    }, 300);
   }
 
-  const showTarget = () => {
-    const targetArray = targetDomList;
+  const showTarget = (scrollMount, targetArray) => {
     targetArray.forEach((v)=>{
       const targetPosTop = v.getBoundingClientRect().top　+ window.pageYOffset;
-      if( scrollMout > targetPosTop - window.innerHeight + 300){
+      if( scrollMount > targetPosTop - window.innerHeight + 300){
         v.classList.add('show')
       }
     })
@@ -47,10 +38,9 @@ const Demo2 = () => {
     return () => window.removeEventListener('scroll', getScroll);
   },[]);
 
-  useEffect(()=>{
-    showTarget();
-  },[scrollMout])
-
+  useEffect(() => {
+    showTarget(scrollMount, targetDomList)
+  },[scrollMount, targetDomList]);
 
   return (
     <Layout>

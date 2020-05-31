@@ -216,7 +216,7 @@ const BlogArticlePage = (props) => {
   const tag = props.data.markdownRemark.frontmatter.tag;
   const excerpt = props.data.markdownRemark.excerpt;
   const path = props.path;
-  console.log(pageInfo)
+
   return (
     <Layout page="blog-article">
       <SEO

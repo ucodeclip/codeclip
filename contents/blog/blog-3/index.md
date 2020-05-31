@@ -107,10 +107,10 @@ export default Demo1
 ページ遷移時（マウント時）に`scroll`クラスがついた要素を取得してstateに保存します。  
 スクロール量を監視して、スクロール量が一定の値にきたら表示したい要素に`show`クラスをつけます。
 
+
 ```js:title=index-2.js
 import React, { useState, useEffect } from 'react';
 import "./index.scss"
-
 
 const Demo2 = () => {
   const [scrollMout, setScrollMount] = useState(0);
@@ -126,26 +126,15 @@ const Demo2 = () => {
   }
 
   const getTargets = () => {
-    //.scrollのついた要素をstateに保存
     const targets = document.getElementsByClassName('scroll')
     const targetArray = Array.from(targets);
     setTargetDomList(targetArray);
-    //setTimeoutは大量の画像等があると読み込みが終わるまで、正しい高さが取れない時があるのでその保険
-    setTimeout(() => {
-      targetArray.forEach((v)=>{
-        const targetPosTop = v.getBoundingClientRect().top;
-        if( targetPosTop < window.innerHeight - 100){
-          v.classList.add('show')
-        }
-      })
-    }, 300);
   }
 
-  const showTarget = () => {
-    const targetArray = targetDomList;
+  const showTarget = (scrollMount, targetArray) => {
     targetArray.forEach((v)=>{
-      const targetPosTop = v.getBoundingClientRect().top;
-      if( targetPosTop < window.innerHeight - 100){
+      const targetPosTop = v.getBoundingClientRect().top　+ window.pageYOffset;
+      if( scrollMount > targetPosTop - window.innerHeight + 300){
         v.classList.add('show')
       }
     })
@@ -154,14 +143,14 @@ const Demo2 = () => {
   useEffect(() => {
     getTargets();
     window.addEventListener("scroll", getScroll);
+    // returnで忘れずにスクロールイベントの削除
     return () => window.removeEventListener('scroll', getScroll);
   },[]);
 
-  useEffect(()=>{
-    //スクロールを監視
-    showTarget();
-  },[scrollMout])
-
+  useEffect(() => {
+    //scroll量を監視
+    showTarget(scrollMount, targetArray)
+  },[scrollMount, targetDomList]);
 
   return (
     <div>
