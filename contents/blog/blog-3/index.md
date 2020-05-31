@@ -166,7 +166,7 @@ const Demo2 = () => {
   return (
     <div>
       <div className="main">
-        <h1 className="title">Scrollアニメーション Scroll Events編</h1>
+        <h1 className="title">Scrollアニメーション スクロールイベント編</h1>
         <ul className="list">
           <li className="item scroll"></li>
           <li className="item scroll"></li>
