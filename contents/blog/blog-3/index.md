@@ -27,7 +27,7 @@ GatsbyJSでスクロールイベントを使用するには`addEventListener()`�
 
 ```js:title=index.js
 import React, { useState, useEffect } from 'react';
-import "./index.scss"
+import styles from "./index.module.scss"
 
 const Demo1 = () => {
   const [scrollMount, setScroll] = useState(0);
@@ -48,21 +48,21 @@ const Demo1 = () => {
   },[]);
 
   return (
-    <div>
-      <div className="counter">スクロール量：{scrollMount}</div>
-      <div className="main">
+    <Layout>
+      <div className={styles.counter}>スクロール量：{scrollMount}</div>
+      <div className={styles.main}>
         <div>
-          <h1 className="title">Scroll量の取得</h1>
+          <h1 className={styles.title}>Scroll量の取得</h1>
         </div>
       </div>
-    </div>
+    </Layout>
   )
 }
 
 export default Demo1
 ```
 
-```scss:title=index.scss
+```scss:title=index.module.scss
 .main {
   min-height: calc(300vh - 60px);
   margin: 0 auto;
@@ -104,7 +104,7 @@ export default Demo1
 スクロールイベントの確認ができたら、スクロールアニメーションを実装します。  
 まずはアニメーションするコンポーネントの作成を行います。  
 `useRef()`を使ってDOMを参照し、DOMの位置を取得しましょう。  
-`useState()`を利用してclass名を保存し、特定のスクロール位置にきたら`show`を追加します。
+`useState()`を利用してclass名を管理します。
 
 ```js:title=index-2.js
 const ScrollComponent = ({children}) => {
@@ -142,19 +142,19 @@ const ScrollComponent = ({children}) => {
 
 ```js:title=index-2.js
 import React, { useState, useEffect, useRef } from 'react';
-import "./index.scss"
+import styles from "./index.module.scss"
 
 const ScrollComponent = ({children}) => {
   const target = useRef(null);
-  const [classNames, setClassNames] = useState(["item", "scroll"]);
+  const [classNames, setClassNames] = useState([styles.item, styles.scroll]);
   useEffect(() => {
     const targetTopPosition = target.current.getBoundingClientRect().top;
     const showTarget = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
       if(scrollPosition > targetTopPosition + 300){
-        setClassNames(["item","scroll","show"])
+        setClassNames([styles.item,styles.scrollShow])
       }else {
-        setClassNames(["item","scroll"])
+        setClassNames([styles.item,styles.scroll])
       }
     }
     showTarget();
@@ -165,18 +165,18 @@ const ScrollComponent = ({children}) => {
     return () => window.removeEventListener('scroll', onScroll);
   },[]);
   return (
-    <divd ref={target} className={classNames.join(" ")}>
+    <div ref={target} className={classNames.join(" ")}>
       {children}
-    </divd>
+    </div>
   );
 }
 
 const Demo2 = () => {
   return (
     <div>
-      <div classame="main">
-        <h1 className="title">Scrollアニメーション スクロールイベント編</h1>
-        <div className="list">
+      <div className={styles.main}>
+        <h1 className={styles.title}>Scrollアニメーション スクロールイベント編</h1>
+        <div className={styles.list}>
           <ScrollComponent>fade in</ScrollComponent>
           <ScrollComponent>fade in</ScrollComponent>
           <ScrollComponent>fade in</ScrollComponent>
@@ -196,7 +196,7 @@ const Demo2 = () => {
 export default Demo2
 ```
 
-```scss:title=index.scss
+```scss:title=index.module.scss
 .main {
   min-height: calc(300vh - 60px);
   margin: 0 auto;
@@ -241,6 +241,9 @@ export default Demo2
   height: 300px;
   background: red;
   transition: all .5s ease-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   &:nth-child(n + 2) {
     margin-top: 200px;
   }
@@ -256,9 +259,9 @@ export default Demo2
 .scroll {
   opacity:0;
   visibility: hidden;
-  &.show {
-    opacity:1;
-    visibility:visible
+  &Show {
+    opacity: 1;
+    visibility: visible;
   }
 }
 ```
