@@ -24,9 +24,9 @@ const ScrollComponent = ({children}) => {
     return () => window.removeEventListener('scroll', onScroll);
   },[]);
   return (
-    <li ref={target} className={classNames.join(" ")}>
+    <div ref={target} className={classNames.join(" ")}>
       {children}
-    </li>
+    </div>
   );
 }
 

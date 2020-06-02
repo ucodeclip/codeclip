@@ -1,6 +1,6 @@
 ---
 slug: post-3
-title: GatsbyJS でスクロールアニメーションを実装する(スクロールイベント編)
+title: GatsbyJSでスクロールアニメーションを実装する(スクロールイベント編)
 date: 2020-05-26
 update: 2020-06-02
 tag:
@@ -165,16 +165,16 @@ const ScrollComponent = ({children}) => {
     return () => window.removeEventListener('scroll', onScroll);
   },[]);
   return (
-    <li ref={target} className={classNames.join(" ")}>
+    <divd ref={target} className={classNames.join(" ")}>
       {children}
-    </li>
+    </divd>
   );
 }
 
 const Demo2 = () => {
   return (
     <div>
-      <div className="main">
+      <div classame="main">
         <h1 className="title">Scrollアニメーション スクロールイベント編</h1>
         <div className="list">
           <ScrollComponent>fade in</ScrollComponent>
