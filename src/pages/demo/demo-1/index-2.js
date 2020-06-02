@@ -1,47 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Layout from "../../../components/layout/layout";
 import SEO from "../../../components/seo/seo"
 import "./index.scss"
 
+const ScrollComponent = ({children}) => {
+  const target = useRef(null);
+  const [classNames, setClassNames] = useState(["item", "scroll"]);
+  useEffect(() => {
+    const targetTopPosition = target.current.getBoundingClientRect().top;
+    const showTarget = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      if(scrollPosition > targetTopPosition + 300){
+        setClassNames(["item","scroll","show"])
+      }else {
+        setClassNames(["item","scroll"])
+      }
+    }
+    showTarget();
+    const onScroll = () => {
+      showTarget();
+    }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  },[]);
+  return (
+    <li ref={target} className={classNames.join(" ")}>
+      {children}
+    </li>
+  );
+}
 
 const Demo2 = () => {
-  const [scrollMount, setScrollMount] = useState(0);
-  const [targetDomList, setTargetDomList] = useState([]);
-
-  const getScroll = () => {
-    const currentScrollMount = Math.max(
-        window.pageYOffset,
-        document.documentElement.scrollTop,
-        document.body.scrollTop
-    );
-    setScrollMount(currentScrollMount)
-  }
-
-  const getTargets = () => {
-    const targets = document.getElementsByClassName('scroll')
-    const targetArray = Array.from(targets);
-    setTargetDomList(targetArray);
-  }
-
-  const showTarget = (scrollMount, targetArray) => {
-    targetArray.forEach((v)=>{
-      const targetPosTop = v.getBoundingClientRect().top　+ window.pageYOffset;
-      if( scrollMount > targetPosTop - window.innerHeight + 300){
-        v.classList.add('show')
-      }
-    })
-  }
-
-  useEffect(() => {
-    getTargets();
-    window.addEventListener("scroll", getScroll);
-    return () => window.removeEventListener('scroll', getScroll);
-  },[]);
-
-  useEffect(() => {
-    showTarget(scrollMount, targetDomList)
-  },[scrollMount, targetDomList]);
-
   return (
     <Layout>
       <SEO
@@ -51,20 +40,18 @@ const Demo2 = () => {
       />
       <div className="main">
         <h1 className="title">Scrollアニメーション スクロールイベント編</h1>
-        <ul className="list">
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-        </ul>
+        <div className="list">
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+        </div>
       </div>
     </Layout>
   )

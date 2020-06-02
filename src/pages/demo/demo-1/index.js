@@ -4,21 +4,22 @@ import SEO from "../../../components/seo/seo"
 import "./index.scss"
 
 const Demo1 = () => {
-  const [scrollMout, setScroll] = useState(0);
-
-  const getScroll = () => {
-    const currentScrollMount = Math.max(
-        window.pageYOffset,
-        document.documentElement.scrollTop,
-        document.body.scrollTop
-    );
-    setScroll(currentScrollMount)
-  }
+  const [scrollMount, setScroll] = useState(0);
 
   useEffect(() => {
+    const getScroll = () => {
+      const currentScrollMount = Math.max(
+          window.pageYOffset,
+          document.documentElement.scrollTop,
+          document.body.scrollTop
+      );
+      setScroll(currentScrollMount)
+    }
+    // スクロールイベントの追加
+    // returnで忘れずにスクロールイベントの削除
     window.addEventListener("scroll", getScroll)
     return () => window.removeEventListener('scroll', getScroll)
-  });
+  },[]);
 
   return (
     <Layout>
@@ -27,7 +28,7 @@ const Demo1 = () => {
         description="【Demo】Scroll量の取得"
         type="article"
       />
-      <div className="counter">スクロール量：{scrollMout}</div>
+      <div className="counter">スクロール量：{scrollMount}</div>
       <div className="main">
         <div>
           <h1 className="title">Scroll量の取得</h1>

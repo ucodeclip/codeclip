@@ -2,7 +2,7 @@
 slug: post-3
 title: GatsbyJS でスクロールアニメーションを実装する(スクロールイベント編)
 date: 2020-05-26
-update: 2020-05-26
+update: 2020-06-02
 tag:
   - GatsbyJS
   - JavaScript
@@ -18,8 +18,8 @@ GatsbyJSでスクールアニメーションの実装ついて、意外と情報
 スクロールイベントを使ってアニメーションする。  
 IntersectionObserverについては扱わない。
 
-## スクロールイベントを使ってスクロール量の取得
-まずはスクロール量の取得を行います。  
+## スクロールイベントを扱う
+スクロールイベントの動作確認のために、まずはスクロール量の取得を行ってみます。  
 GatsbyJSでスクロールイベントを使用するには`addEventListener()`メソッドを用いて、スクロールイベントを登録します。  
 ページ離脱時に`removeEventListener()`メソッドで、忘れずにイベントの削除をしましょう。  
 でないと、ページを遷移後もスクロールイベントが発火し続けてしまいます。
@@ -30,27 +30,26 @@ import React, { useState, useEffect } from 'react';
 import "./index.scss"
 
 const Demo1 = () => {
-  const [scrollMout, setScroll] = useState(0);
-
-  const getScroll = () => {
-    const currentScrollMount = Math.max(
-        window.pageYOffset,
-        document.documentElement.scrollTop,
-        document.body.scrollTop
-    );
-    setScroll(currentScrollMount)
-  }
+  const [scrollMount, setScroll] = useState(0);
 
   useEffect(() => {
+    const getScroll = () => {
+      const currentScrollMount = Math.max(
+          window.pageYOffset,
+          document.documentElement.scrollTop,
+          document.body.scrollTop
+      );
+      setScroll(currentScrollMount)
+    }
     // スクロールイベントの追加
     // returnで忘れずにスクロールイベントの削除
     window.addEventListener("scroll", getScroll)
     return () => window.removeEventListener('scroll', getScroll)
-  });
+  },[]);
 
   return (
     <div>
-      <div className="counter">スクロール量：{scrollMout}</div>
+      <div className="counter">スクロール量：{scrollMount}</div>
       <div className="main">
         <div>
           <h1 className="title">Scroll量の取得</h1>
@@ -99,77 +98,96 @@ export default Demo1
 }
 ```
 
-
 [スクロール量取得のデモページはこちら](https://codeclip.netlify.app/demo/demo-1/)
 
-## スクロールイベントを使ったスクロールアニメーションの実装
-スクロール量が取得できたら残りは実装するだけです。  
-ページ遷移時（マウント時）に`scroll`クラスがついた要素を取得してstateに保存します。  
-スクロール量を監視して、スクロール量が一定の値にきたら表示したい要素に`show`クラスをつけます。
-
+## スクロールアニメーションの実装
+スクロールイベントの確認ができたら、スクロールアニメーションを実装します。  
+まずはアニメーションするコンポーネントの作成を行います。  
+`useRef()`を使ってDOMを参照し、DOMの位置を取得しましょう。  
+`useState()`を利用してclass名を保存し、特定のスクロール位置にきたら`show`を追加します。
 
 ```js:title=index-2.js
-import React, { useState, useEffect } from 'react';
+const ScrollComponent = ({children}) => {
+  // DOMの取得にはuseRef()を使う
+  const target = useRef(null);
+  const [classNames, setClassNames] = useState(["item", "scroll"]);
+
+  useEffect(() => {
+    const targetTopPosition = target.current.getBoundingClientRect().top;
+    const showTarget = () => {
+      // クラスの切り替え
+      const scrollPosition = window.scrollY + window.innerHeight;
+      if(scrollPosition > targetTopPosition + 300){
+        setClassNames(["item","scroll","show"])
+      }else {
+        setClassNames(["item","scroll"])
+      }
+    }
+    showTarget();
+    const onScroll = () => {
+      showTarget();
+    }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  },[]);
+  return (
+    <li ref={target} className={classNames.join(" ")}>
+      {children}
+    </li>
+  );
+}
+```
+
+全体的なコードは以下になります。
+
+```js:title=index-2.js
+import React, { useState, useEffect, useRef } from 'react';
 import "./index.scss"
 
-const Demo2 = () => {
-  const [scrollMout, setScrollMount] = useState(0);
-  const [targetDomList, setTargetDomList] = useState([]);
-
-  const getScroll = () => {
-    const currentScrollMount = Math.max(
-        window.pageYOffset,
-        document.documentElement.scrollTop,
-        document.body.scrollTop
-    );
-    setScrollMount(currentScrollMount)
-  }
-
-  const getTargets = () => {
-    const targets = document.getElementsByClassName('scroll')
-    const targetArray = Array.from(targets);
-    setTargetDomList(targetArray);
-  }
-
-  const showTarget = (scrollMount, targetArray) => {
-    targetArray.forEach((v)=>{
-      const targetPosTop = v.getBoundingClientRect().top　+ window.pageYOffset;
-      if( scrollMount > targetPosTop - window.innerHeight + 300){
-        v.classList.add('show')
+const ScrollComponent = ({children}) => {
+  const target = useRef(null);
+  const [classNames, setClassNames] = useState(["item", "scroll"]);
+  useEffect(() => {
+    const targetTopPosition = target.current.getBoundingClientRect().top;
+    const showTarget = () => {
+      const scrollPosition = window.scrollY + window.innerHeight;
+      if(scrollPosition > targetTopPosition + 300){
+        setClassNames(["item","scroll","show"])
+      }else {
+        setClassNames(["item","scroll"])
       }
-    })
-  }
-
-  useEffect(() => {
-    getTargets();
-    window.addEventListener("scroll", getScroll);
-    // returnで忘れずにスクロールイベントの削除
-    return () => window.removeEventListener('scroll', getScroll);
+    }
+    showTarget();
+    const onScroll = () => {
+      showTarget();
+    }
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
   },[]);
+  return (
+    <li ref={target} className={classNames.join(" ")}>
+      {children}
+    </li>
+  );
+}
 
-  useEffect(() => {
-    //scroll量を監視
-    showTarget(scrollMount, targetArray)
-  },[scrollMount, targetDomList]);
-
+const Demo2 = () => {
   return (
     <div>
       <div className="main">
         <h1 className="title">Scrollアニメーション スクロールイベント編</h1>
-        <ul className="list">
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-          <li className="item scroll"></li>
-        </ul>
+        <div className="list">
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+          <ScrollComponent>fade in</ScrollComponent>
+        </div>
       </div>
     </div>
   )
@@ -249,5 +267,5 @@ export default Demo2
 
 ## まとめ
 当たり前ですが、GatsbyJSではページ遷移でリロードが生じないので、マウント時にスクロールイベントの登録を行います。  
-その際に`removeEventListener()`でイベントの削除記述も忘れないようにしたいですね。  
-IntersectionObserverを使ったスクロールアニメーションに関してはまた後日書いていこうと思います。
+その際に`removeEventListener()`でイベントの削除記述も忘れないよう気をつけたいですね。  
+IntersectionObserverを使ったスクロールアニメーションに関しては後日書いていこうと思います。
