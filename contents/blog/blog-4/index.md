@@ -279,6 +279,30 @@ export default Demo2
 
 [デモはこちら](https://codeclip.netlify.app/demo/demo-4/index-2)
 
+## Polyfillについて
+Intersection Observerはそのままでは `IE11`、`iOS Safari`などで動きません。  
+IEならまだしも、iOS Safariを切ることにはなかなかの勇気が必要です。  
+なのでPolyfillで対応しましょう。
+npmで`intersection-observer`をインストールします。
+
+```bash:title=shell
+npm install intersection-observer
+```
+
+インストールを終えたら`gatsby-browser.js`を用いてインポートします。
+
+
+```js:title=gatsby-browser.js
+// IntersectionObserver polyfill (Safari, IE)
+export const onClientEntry = async () => {
+  if (typeof IntersectionObserver === `undefined`) {
+    await import(`intersection-observer`);
+  }
+}
+```
+
+これでIE11, iOS Safariでも動くようになっているはずです。
+
 ## まとめ
 Intersection Observerを使用したスクロールアニメーションの実装ができました。  
 冒頭にも書きましたが、スクロールイベントとIntersection Observerを比較した際、パフォーマンス点で後者が優れているので特別な事情がない限りは積極的に使用していきましょう。  
