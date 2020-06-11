@@ -158,8 +158,8 @@ const observer = new IntersectionObserver(cb,options);
 ## スクロールアニメーションの実装
 
 では実際の実装になります。  
-今回はビューポートの上下-10%の時点で、ターゲット要素が半分以上見えている時に、背景色を変える処理を発火させようと思います。  
-また処理の発火地点がわかりやすいように、上下の150px範囲の色を少し変えています。
+今回はビューポートの上下-10%の時点で、ターゲット要素の背景色を変える処理を発火させようと思います。  
+また処理の発火地点がわかりやすいように、上下の10%範囲の色を少し変えています。
 
 ```js:title=index-2.js
 import React, { useState, useEffect, useRef } from 'react';
@@ -183,7 +183,6 @@ const TargetComponent = ({children}) => {
     const options = {
       root:null,//ビューポートと交差
       rootMargin: "-10% 0px",//上下内側に-10%の地点で処理を実行する
-      threshold: 0.5//ターゲット要素の半分
     }
     const io = new IntersectionObserver(cb, options);
     io.observe(target.current)
