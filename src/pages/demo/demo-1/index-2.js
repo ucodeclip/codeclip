@@ -34,8 +34,8 @@ const Demo2 = () => {
   return (
     <Layout>
       <SEO
-        title="【Demo】Scrollアニメーションの実装"
-        description="【Demo】Scrollアニメーションの実装"
+        title="【Demoページ】Scrollアニメーションの実装（スクロールイベント編）"
+        description="【Demoページ】Scrollアニメーションの実装（スクロールイベント編）"
         type="article"
       />
       <div className={styles.main}>

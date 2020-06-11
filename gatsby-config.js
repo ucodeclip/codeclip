@@ -14,7 +14,7 @@ module.exports = {
       options: {
         // The option defaults to true
         checkSupportedExtensions: false,
-      },
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,

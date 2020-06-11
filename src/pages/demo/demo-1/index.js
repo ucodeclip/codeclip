@@ -24,8 +24,8 @@ const Demo1 = () => {
   return (
     <Layout>
       <SEO
-        title="【Demo】Scroll量の取得"
-        description="【Demo】Scroll量の取得"
+        title="【Demoページ】Scroll量の取得"
+        description="【Demoページ】Scroll量の取得"
         type="article"
       />
       <div className={styles.counter}>スクロール量：{scrollMount}</div>

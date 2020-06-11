@@ -1,0 +1,78 @@
+.title {
+  position: absolute;
+  top: 10vh;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  @media screen and (max-width:812px) {
+    margin-top: 5.333vw;
+    font-size: 5.333vw;
+  }
+}
+.mainA {
+  position: relative;
+  min-height: 300vh;
+  margin: 0 auto;
+  padding: 60px 50px 0;
+  background: #ddd;
+  box-sizing:border-box;
+  @media screen and (max-width:812px) {
+    padding: 16vw 5.333vw 0;
+  }
+}
+.mainB {
+  position: relative;
+  min-height: 400vh;
+  margin: 0 auto;
+  padding: 60px 50px 0;
+  background: #ddd;
+  box-sizing:border-box;
+  @media screen and (max-width:812px) {
+    padding: 16vw 5.333vw 0;
+  }
+}
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 100vh;
+  width: 200px;
+  height: 50vh;
+  @media screen and (min-width:813px) {
+    margin-left: 50px;
+  }
+  @media screen and (max-width:812px) {
+    margin: 100vh auto 0;
+  }
+}
+.frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: rgba(0,0,0,.1);
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background: rgba(0,0,0,.1);
+  }
+}
+.scroll {
+  background: palegreen;
+  &In {
+    background: paleturquoise;
+  }
+}
