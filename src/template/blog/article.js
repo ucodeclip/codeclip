@@ -9,6 +9,7 @@ import Date from "../../components/page-blog-article/date"
 import Pager from "../../components/page-blog-article/pager"
 
 const Main = styled.main`
+  display: block;
   box-sizing: border-box;
   background: #f9f9f9;
   @media screen and (min-width:813px) {

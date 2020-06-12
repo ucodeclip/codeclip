@@ -305,8 +305,8 @@ export const onClientEntry = async () => {
 
 ## まとめ
 Intersection Observerを使用したスクロールアニメーションの実装ができました。  
-冒頭にも書きましたが、スクロールイベントとIntersection Observerを比較した際、パフォーマンス点で後者が優れているので特別な事情がない限りは積極的に使用していきましょう。  
+冒頭にも書きましたが、スクロールイベントとIntersection Observerを比較した際、パフォーマンスの点で後者が優れているので特別な事情がない限りは積極的に使用していきましょう。  
 
 ## 参考
 
-[Intersection Observer API - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API#Intersection_observer_options)
+[Intersection Observer API - Web API | MDN](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API)
