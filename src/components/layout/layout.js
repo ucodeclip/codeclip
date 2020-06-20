@@ -25,7 +25,7 @@ const layout = ({ children, page }) => {
   return (
     <Wrapper data-page={page}>
       <GlobalStyle />
-      <Header />
+        <Header page={page} />
         <Contents>
           {children}
         </Contents>

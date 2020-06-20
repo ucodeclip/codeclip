@@ -21,13 +21,15 @@ const Header = styled.header`
 const Inner = styled.div`
   display: flex;
   align-items: center;
-  width: 100%;
   height: 100%;
   box-sizing: border-box;
   @media screen and (min-width:813px) {
-    padding: 0 30px;
+    max-width: 1000px;
+    width: 90%;
+    margin: 0 auto;
   }
   @media screen and (max-width:812px) {
+    width: 100%;
     padding: 0 5%;
   }
 `
@@ -41,8 +43,10 @@ const Logo = styled(Link)`
   }
 `
 
-class HeaderModule extends React.Component{
-  render(){
+const HeaderModule = (props) => {
+  if(props.page === 'top') {
+    return null
+  }else {
     return(
       <Header id="header">
         <Inner>
