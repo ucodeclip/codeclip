@@ -60,8 +60,8 @@
 .scroll {
   opacity:0;
   visibility: hidden;
-  &.show {
-    opacity:1;
-    visibility:visible
+  &Show {
+    opacity: 1;
+    visibility: visible;
   }
 }

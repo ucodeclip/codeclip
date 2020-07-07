@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from "../../../components/layout/layout";
 import SEO from "../../../components/seo/seo"
-import "./index.scss"
+import styles from "./index.module.scss"
 
 const Demo1 = () => {
   const [scrollMount, setScroll] = useState(0);
@@ -24,14 +24,14 @@ const Demo1 = () => {
   return (
     <Layout>
       <SEO
-        title="【Demo】Scroll量の取得"
-        description="【Demo】Scroll量の取得"
+        title="【Demoページ】Scroll量の取得"
+        description="【Demoページ】Scroll量の取得"
         type="article"
       />
-      <div className="counter">スクロール量：{scrollMount}</div>
-      <div className="main">
+      <div className={styles.counter}>スクロール量：{scrollMount}</div>
+      <div className={styles.main}>
         <div>
-          <h1 className="title">Scroll量の取得</h1>
+          <h1 className={styles.title}>Scroll量の取得</h1>
         </div>
       </div>
     </Layout>

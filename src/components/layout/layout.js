@@ -2,7 +2,7 @@ import React from "react"
 import styled from "styled-components"
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import "../../styles/index.scss"
+import GlobalStyle from '../../styles/styled-reset';
 
 const Wrapper = styled.div`
   position: relative;
@@ -24,7 +24,8 @@ const Contents = styled.div`
 const layout = ({ children, page }) => {
   return (
     <Wrapper data-page={page}>
-      <Header />
+      <GlobalStyle />
+        <Header page={page} />
         <Contents>
           {children}
         </Contents>

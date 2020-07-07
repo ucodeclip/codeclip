@@ -1,19 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Layout from "../../../components/layout/layout";
 import SEO from "../../../components/seo/seo"
-import "./index.scss"
+import styles from "./index.module.scss"
 
 const ScrollComponent = ({children}) => {
   const target = useRef(null);
-  const [classNames, setClassNames] = useState(["item", "scroll"]);
+  const [classNames, setClassNames] = useState([styles.item, styles.scroll]);
   useEffect(() => {
     const targetTopPosition = target.current.getBoundingClientRect().top;
     const showTarget = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
       if(scrollPosition > targetTopPosition + 300){
-        setClassNames(["item","scroll","show"])
+        setClassNames([styles.item,styles.scrollShow])
       }else {
-        setClassNames(["item","scroll"])
+        setClassNames([styles.item,styles.scroll])
       }
     }
     showTarget();
@@ -24,9 +24,9 @@ const ScrollComponent = ({children}) => {
     return () => window.removeEventListener('scroll', onScroll);
   },[]);
   return (
-    <li ref={target} className={classNames.join(" ")}>
+    <div ref={target} className={classNames.join(" ")}>
       {children}
-    </li>
+    </div>
   );
 }
 
@@ -34,13 +34,13 @@ const Demo2 = () => {
   return (
     <Layout>
       <SEO
-        title="【Demo】Scrollアニメーションの実装"
-        description="【Demo】Scrollアニメーションの実装"
+        title="【Demoページ】Scrollアニメーションの実装（スクロールイベント編）"
+        description="【Demoページ】Scrollアニメーションの実装（スクロールイベント編）"
         type="article"
       />
-      <div className="main">
-        <h1 className="title">Scrollアニメーション スクロールイベント編</h1>
-        <div className="list">
+      <div className={styles.main}>
+        <h1 className={styles.title}>Scrollアニメーション スクロールイベント編</h1>
+        <div className={styles.list}>
           <ScrollComponent>fade in</ScrollComponent>
           <ScrollComponent>fade in</ScrollComponent>
           <ScrollComponent>fade in</ScrollComponent>

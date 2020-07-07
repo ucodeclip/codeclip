@@ -9,6 +9,7 @@ import Date from "../../components/page-blog-article/date"
 import Pager from "../../components/page-blog-article/pager"
 
 const Main = styled.main`
+  display: block;
   box-sizing: border-box;
   background: #f9f9f9;
   @media screen and (min-width:813px) {
@@ -215,7 +216,7 @@ const BlogArticlePage = (props) => {
   const update = props.data.markdownRemark.frontmatter.update;
   const tag = props.data.markdownRemark.frontmatter.tag;
   const excerpt = props.data.markdownRemark.excerpt;
-  const path = props.path;
+  const path = props.location.pathname;
 
   return (
     <Layout page="blog-article">

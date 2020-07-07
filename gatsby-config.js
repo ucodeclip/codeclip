@@ -9,12 +9,13 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
+    `gatsby-plugin-transition-link`,
     {
       resolve: `gatsby-transformer-sharp`,
       options: {
         // The option defaults to true
         checkSupportedExtensions: false,
-      },
+      }
     },
     {
       resolve: `gatsby-transformer-remark`,
@@ -67,6 +68,14 @@ module.exports = {
       resolve: "gatsby-plugin-google-analytics",
       options: {
         trackingId: "UA-166798468-1"
+      }
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://codeclip.netlify.app/',
+        sitemap: 'https://codeclip.netlify.app/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
       }
     }
   ]

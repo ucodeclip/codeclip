@@ -11,7 +11,7 @@ const Article = styled.article`
   color: #232946;
   @media screen and (min-width:813px) {
     max-width: 1000px;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding: 20px 3%;
     box-shadow: 0 0 5px rgba(0,0,0,.2);
