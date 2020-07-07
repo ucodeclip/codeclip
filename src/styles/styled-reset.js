@@ -45,6 +45,10 @@ q {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+.tl-edges {
+  overflow: hidden;
+}
 `;
 
 export default GlobalStyle
