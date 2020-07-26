@@ -16,7 +16,7 @@ GatsbyJSでページ遷移アニメーションの実装する方法について
 またアニメーション自体の実装には`GSAP`を採用しています。  
 
 `Gatsby Plugin Transition Link`にはデフォルトに備わっているアニメーション（`AniLink`）を使用する方法と、自分でカスタマイズしたアニメーションを実装する方法(`TransitionLink`)があるのですが、この記事は「前編」ということで`AniLink`について解説していきます。  
-`TransitionLink`については~~「後編」に書いていこうと思います。~~「[後編](/blog/blog-6/)」書きました。
+`TransitionLink`については~~「後編」に書いていこうと思います。~~「[後編](/blog/post-6)」書きました。
 
 
 ## 前提
@@ -196,7 +196,9 @@ export default AniLink2;
   background: #ddd;
   box-sizing: border-box;
   @media screen and (min-width:813px) {
-    padding: 60px 50px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 60px 0;
   }
   @media screen and (max-width:812px) {
     padding: 16vw 5.333vw 0;
@@ -239,4 +241,4 @@ export default AniLink2;
 [Gatsby Plugin Transition Link : 公式Document](https://transitionlink.tylerbarnes.ca/)
 
 ## 追記
-「[後編](/blog/blog-6/)」（`TransitionLink`編）書きました。
+「[後編](/blog/post-6)」（`TransitionLink`編）書きました。
