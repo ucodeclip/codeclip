@@ -2,7 +2,7 @@
 slug: post-5
 title: GatsbyJSでページ遷移アニメーションを実装する（前編）
 date: 2020-07-07
-update: 2020-07-07
+update: 2020-07-26
 tag:
   - GatsbyJS
   - アニメーション
@@ -14,8 +14,9 @@ GatsbyJSでページ遷移アニメーションの実装する方法について
 ちょっと長くなったので「前編」・「後編」にわけました。  
 ページ遷移アニメーションにもいくつかの選択肢があるみたいですが、今回は`Gatsby Plugin Transition Link`のプラグインを使用しました。  
 またアニメーション自体の実装には`GSAP`を採用しています。  
+
 `Gatsby Plugin Transition Link`にはデフォルトに備わっているアニメーション（`AniLink`）を使用する方法と、自分でカスタマイズしたアニメーションを実装する方法(`TransitionLink`)があるのですが、この記事は「前編」ということで`AniLink`について解説していきます。  
-自分で高度なアニメーションを実装する方法については「後編」に書いていきます。
+`TransitionLink`については~~「後編」に書いていこうと思います。~~「[後編](/blog/blog-6/)」書きました。
 
 
 ## 前提
@@ -236,3 +237,6 @@ export default AniLink2;
 
 ## 参考
 [Gatsby Plugin Transition Link : 公式Document](https://transitionlink.tylerbarnes.ca/)
+
+## 追記
+「[後編](/blog/blog-6/)」（`TransitionLink`編）書きました。
