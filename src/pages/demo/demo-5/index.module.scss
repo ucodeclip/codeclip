@@ -13,7 +13,9 @@
   background: #ddd;
   box-sizing: border-box;
   @media screen and (min-width:813px) {
-    padding: 60px 50px;
+    width: 90%;
+    margin: 0 auto;
+    padding: 60px 0;
   }
   @media screen and (max-width:812px) {
     padding: 16vw 5.333vw 0;
