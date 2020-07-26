@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   position: relative;
   background: #ddd;
   color: #232946;
+  min-height: 100vh;
   @media screen and (min-width:813px) {
   }
   @media screen and (max-width:812px) {
