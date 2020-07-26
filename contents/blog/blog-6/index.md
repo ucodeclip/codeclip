@@ -632,7 +632,7 @@ const CommonParts = () => {
 基本的な使い方は上記の形になります。  
 共通で使いたい部分を`TransitionPortal`でラップするだけです。  
 
-使い方がわかったところで、実装してましょう。
+使い方がわかったところで、実装してみましょう。
 
 ```js:title=TransitionPortal-1.js
 import React, {useRef} from 'react';
