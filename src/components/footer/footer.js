@@ -4,6 +4,7 @@ import { calcSpVw } from '../../styles/styled-function'
 
 const Footer = styled.footer`
   width: 100%;
+  background: #232946;
   color: #fffffe;
   @media screen and (min-width:813px) {
   }

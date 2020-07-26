@@ -129,6 +129,12 @@ const ArticleBody = styled.div`
       font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
       font-size: .8em;
       color: #fff;
+      + .gatsby-highlight {
+      margin-top: 0;
+    }
+    }
+    .gatsby-highlight {
+      margin-top: 20px
     }
     .gatsby-resp-image-wrapper {
       margin-bottom: 40px;
@@ -196,6 +202,12 @@ const ArticleBody = styled.div`
       font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
       font-size: .8em;
       color: #fff;
+      + .gatsby-highlight {
+        margin-top: 0;
+      }
+    }
+    .gatsby-highlight {
+      margin-top: ${calcSpVw(40)};
     }
     .gatsby-resp-image-wrapper {
       margin-bottom: ${calcSpVw(80)};

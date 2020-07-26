@@ -6,7 +6,9 @@ import GlobalStyle from '../../styles/styled-reset';
 
 const Wrapper = styled.div`
   position: relative;
+  background: #ddd;
   color: #232946;
+  min-height: 100vh;
   @media screen and (min-width:813px) {
   }
   @media screen and (max-width:812px) {
@@ -20,16 +22,16 @@ const Contents = styled.div`
   }
 `
 
-const layout = ({ children, page }) => {
+const layoutDemo = ({ children, page }) => {
   return (
-    <Wrapper data-page={page}>
+    <Wrapper data-page={'demo'}>
       <GlobalStyle />
-        <Header page={page} />
-        <Contents>
-          {children}
-        </Contents>
+      <Header page={'demo'}/>
+      <Contents>
+        {children}
+      </Contents>
       <Footer />
     </Wrapper>
   )
 }
-export default layout
+export default layoutDemo
