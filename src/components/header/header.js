@@ -2,7 +2,6 @@ import React from "react";
 import {Link} from "gatsby"
 import styled from "styled-components"
 import { calcSpVw } from '../../styles/styled-function'
-// import Nav from "./nav";
 
 const Header = styled.header`
   position: absolute;
@@ -13,6 +12,9 @@ const Header = styled.header`
   background: #232946;
   @media screen and (min-width:813px) {
     height: 60px;
+    .inner {
+      max-width: ${props => props.page === 'demo' ? 100+'%' : 1000+'px'}
+    }
   }
   @media screen and (max-width:812px) {
     height: ${calcSpVw(120)}
@@ -43,19 +45,18 @@ const Logo = styled(Link)`
   }
 `
 
-const HeaderModule = (props) => {
-  if(props.page === 'top') {
+const HeaderModule = ({page}) => {
+  if(page === 'top') {
     return null
-  }else {
-    return(
-      <Header id="header">
-        <Inner>
-          <Logo to="/">Code Clip Blog</Logo>
-          {/* <Nav /> */}
-        </Inner>
-      </Header>
-    )
   }
+  return(
+    <Header id="header" page={page}>
+      <Inner className='inner'>
+        <Logo to="/">Code Clip Blog</Logo>
+        {/* <Nav /> */}
+      </Inner>
+    </Header>
+  )
 }
 
 export default HeaderModule;
