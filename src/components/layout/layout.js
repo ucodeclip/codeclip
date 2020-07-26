@@ -6,7 +6,6 @@ import GlobalStyle from '../../styles/styled-reset';
 
 const Wrapper = styled.div`
   position: relative;
-  background: #232946;
   color: #232946;
   @media screen and (min-width:813px) {
   }
