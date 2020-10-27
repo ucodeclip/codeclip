@@ -99,6 +99,15 @@ const ArticleBody = styled.div`
       line-height: 1.5;
       font-weight: bold;
     }
+    h3 {
+      margin-top: 30px;
+      padding: 10px 0;
+      border-bottom: 3px solid #232946;
+      box-sizing: border-box;
+      font-size: 20px;
+      line-height: 1.5;
+      font-weight: bold;
+    }
     p {
       margin-top: 20px;
     }
@@ -168,6 +177,14 @@ const ArticleBody = styled.div`
       padding: ${calcSpVw(15)} ${calcSpVw(30)};
       background: #f5f5f5;
       border-left: ${calcSpVw(10)} solid #232946;
+      box-sizing: border-box;
+      font-size: ${calcSpVw(40)};
+      font-weight: bold;
+    }
+    h3 {
+      margin-top: ${calcSpVw(60)};
+      padding: ${calcSpVw(15)} ${calcSpVw(0)};
+      border-bottom: ${calcSpVw(6)} solid #232946;
       box-sizing: border-box;
       font-size: ${calcSpVw(40)};
       font-weight: bold;
