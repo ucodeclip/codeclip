@@ -152,6 +152,7 @@ const ArticleBody = styled.div`
       position: relative;
       color: #4ab4fc;
       cursor: pointer;
+      word-break: break-all;
       &::before {
         content: "";
         position: absolute;
@@ -232,6 +233,7 @@ const ArticleBody = styled.div`
     a {
       color: #4ab4fc;
       text-decoration: underline;
+      word-break: break-all;
     }
   }
 `
