@@ -70,13 +70,20 @@ const ArticleLink = styled(Link)`
 
 const ArticleModule = (props) => {
   const slug = "/blog/" + props.content.node.frontmatter.slug
+  const formatter = props.content.node.frontmatter;
+  const title = formatter.title;
+  const text = props.content.node.excerpt;
+  const date = formatter.date;
+  const update = formatter.update;
+  const tag = formatter.tag;
+
   return (
     <Article>
       <ArticleLink to={slug}></ArticleLink>
-      <ArticleTitle>{props.content.node.frontmatter.title}</ArticleTitle>
-      <ArticleText>{props.content.node.excerpt}</ArticleText>
-      <Date date={props.content.node.frontmatter.date} />
-      <Tag content={props.content.node.frontmatter.tag} />
+      <ArticleTitle>{title}</ArticleTitle>
+      <ArticleText>{text}</ArticleText>
+      <Date date={date} update={update} />
+      <Tag content={tag} />
     </Article>
   )
 }
