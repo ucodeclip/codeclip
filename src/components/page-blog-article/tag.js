@@ -20,6 +20,14 @@ const TagWrap = styled.div`
   @media screen and (max-width:812px) {
     margin-top: ${calcSpVw(25)}
   }
+  svg {
+    @media screen and (min-width:813px) {
+      width: 20px;
+    }
+    @media screen and (max-width:812px) {
+      width: ${calcSpVw(40)}
+    }
+  }
 `
 const TagList = styled.ul`
   display: flex;
