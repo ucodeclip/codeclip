@@ -2,8 +2,9 @@ import React from "react"
 import styled from "styled-components"
 import { calcSpVw } from '../../../styles/styled-function'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { library } from '@fortawesome/fontawesome-svg-core'
+import { config, library } from '@fortawesome/fontawesome-svg-core'
 import { faCalendar, faRedo } from '@fortawesome/free-solid-svg-icons'
+config.autoAddCss = false;
 library.add({faCalendar,faRedo})
 
 const DateList = styled.div`
@@ -17,12 +18,22 @@ const DateList = styled.div`
   }
 `
 const DateItem = styled.div`
+  display: flex;
+  align-items: ${props => props.type === "update" ? 'center': 'flex-start'};
   color: inherit;
   @media screen and (min-width:813px) {
     margin-left: ${props => props.type === "update" ? '20px': '0'};
   }
   @media screen and (max-width:812px) {
     margin-left: ${props => props.type === "update" ? calcSpVw(40) : '0'};
+  }
+  svg {
+    @media screen and (min-width:813px) {
+      width: 15px;
+    }
+    @media screen and (max-width:812px) {
+      width: ${calcSpVw(30)};
+    }
   }
 `
 const Date = styled.span`
