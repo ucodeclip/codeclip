@@ -11,11 +11,11 @@ import Pager from "../../components/page-blog-article/pager"
 const Main = styled.main`
   display: block;
   box-sizing: border-box;
-  background: #f9f9f9;
+  background: #fff;
   @media screen and (min-width:813px) {
-    padding: 100px 0 60px;
+    padding: 0 0 60px;
     min-height: calc(100vh - 60px);
-    &::before {
+    /* &::before {
       content: "";
       position: absolute;
       top: 0;
@@ -23,12 +23,12 @@ const Main = styled.main`
       width: 100%;
       height: 200px;
       background: #232946;
-    }
+    } */
   }
   @media screen and (max-width:812px) {
-    padding: ${calcSpVw(120)} 0 ${calcSpVw(60)};
+    padding: 0 0 ${calcSpVw(60)};
     min-height: calc(100vh - ${calcSpVw(60)});
-    &::before {
+    /* &::before {
       content: "";
       position: absolute;
       top: 0;
@@ -36,7 +36,43 @@ const Main = styled.main`
       width: 100%;
       height: ${calcSpVw(400)};
       background: #232946;
-    }
+    } */
+  }
+`
+const ArticleHead = styled.div`
+  position: relative;
+  background: #232946;
+  @media screen and (min-width:813px) {
+    padding: 100px 0 60px;
+  }
+  @media screen and (max-width:812px) {
+    padding: ${calcSpVw(180)} 0 ${calcSpVw(60)};
+  }
+`
+const ArticleHeadContainer = styled.div`
+  font-weight: bold;
+  margin: 0 auto;
+  color: #fff;
+  @media screen and (min-width:813px) {
+    max-width: 1000px;
+    width: 90%;
+    padding: 0 3%;
+  }
+  @media screen and (max-width:812px) {
+    width: 90%;
+    padding: 0 3%;
+  }
+`
+const Title = styled.h1`
+  font-weight: bold;
+  color: #fff;
+  @media screen and (min-width:813px) {
+    padding-bottom: 30px;
+    font-size: 30px;
+  }
+  @media screen and (max-width:812px) {
+    padding-bottom: ${calcSpVw(60)};
+    font-size: ${calcSpVw(50)}
   }
 `
 const Article = styled.article`
@@ -47,34 +83,13 @@ const Article = styled.article`
   @media screen and (min-width:813px) {
     max-width: 1000px;
     width: 90%;
-    border-radius: 5px;
-    padding: 60px 3%;
-    box-shadow: 0 0 3px rgba(0,0,0,.3);
+    padding: 60px 0;
   }
   @media screen and (max-width:812px) {
     width: 90%;
-    border-radius: ${calcSpVw(10)};
-    padding: ${calcSpVw(50)} 3%;
-    box-shadow: 0 0 ${calcSpVw(6)} rgba(0,0,0,.3);
+    padding: ${calcSpVw(80)} 0;
   }
 `
-const ArticleHead = styled.div`
-  position: relative;
-  @media screen and (min-width:813px) {
-  }
-  @media screen and (max-width:812px) {
-  }
-`
-const Title = styled.h1`
-  font-weight: bold;
-  @media screen and (min-width:813px) {
-    font-size: 30px;
-  }
-  @media screen and (max-width:812px) {
-    font-size: ${calcSpVw(50)}
-  }
-`
-
 const ArticleBody = styled.div`
   .language-text {
     white-space: -moz-pre-wrap;
@@ -84,7 +99,6 @@ const ArticleBody = styled.div`
     word-wrap: break-word;
   }
   @media screen and (min-width:813px) {
-    margin-top: 50px;
     font-size: 16px;
     > *:first-child {
       margin-top: 0!important;
@@ -169,7 +183,6 @@ const ArticleBody = styled.div`
     }
   }
   @media screen and (max-width:812px) {
-    margin-top: ${calcSpVw(100)};
     > *:first-child {
       margin-top: 0!important;
     }
@@ -258,12 +271,14 @@ const BlogArticlePage = (props) => {
         path={path}
       />
       <Main>
-        <Article>
-          <ArticleHead>
+        <ArticleHead>
+          <ArticleHeadContainer>
             <Title>{title}</Title>
             <Date date={date} update={update} />
             <Tag tag={tag} />
-          </ArticleHead>
+          </ArticleHeadContainer>
+        </ArticleHead>
+        <Article>
           <ArticleBody dangerouslySetInnerHTML={{ __html: htmlContents }}></ArticleBody>
         </Article>
         <Pager pageInfo={pageInfo} pageContext={pageContext} />

@@ -48,11 +48,11 @@ const PagerModule = (props) => {
 
     <PagerList>
       {
-        props.pageInfo.hasNextPage ? <PagerItem pos="left"><PagerLink to={props.pageContext.nextPath}>前の記事</PagerLink></PagerItem> : ""
+        props.pageInfo.hasNextPage ? <PagerItem pos="left"><PagerLink to={props.pageContext.nextPath}>&lt; 前の記事</PagerLink></PagerItem> : ""
       }
       <PagerItem pos="center"><PagerLink to="/">TOPへ戻る</PagerLink></PagerItem>
       {
-        props.pageInfo.hasPreviousPage ? <PagerItem pos="right"><PagerLink to={props.pageContext.prevPath}>次の記事</PagerLink></PagerItem> : ""
+        props.pageInfo.hasPreviousPage ? <PagerItem pos="right"><PagerLink to={props.pageContext.prevPath}>次の記事 &gt;</PagerLink></PagerItem> : ""
       }
     </PagerList>
   )

@@ -13,7 +13,7 @@ const Header = styled.header`
   @media screen and (min-width:813px) {
     height: 60px;
     .inner {
-      max-width: ${props => props.page === 'demo' ? 100+'%' : 1000+'px'}
+      max-width: 100%;
     }
   }
   @media screen and (max-width:812px) {
