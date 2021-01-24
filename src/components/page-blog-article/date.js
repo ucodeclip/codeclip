@@ -19,8 +19,18 @@ const DateList = styled.div`
 `
 const DateItem = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   color: inherit;
+  @media screen and (min-width:813px) {
+    &:nth-child(n + 2){
+      margin-left: 10px;
+    }
+  }
+  @media screen and (max-width:812px) {
+    &:nth-child(n + 2){
+      margin-left: ${calcSpVw(20)};
+    }
+  }
   svg {
     @media screen and (min-width:813px) {
       width: 15px;
