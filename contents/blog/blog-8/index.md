@@ -205,9 +205,9 @@ useEffect(() => {
 }, []);
 ```
 
-`useEffect`が呼び出された時に、`addEventLisner`のコールバックが`fruit`をキャプチャするのですが、今回は`useEffect`の第二引数を空にしているため、マウント時のみしか`useEffect`が実行されません。つまり`fruit`の値がマウント時以降、更新されないわけです。
+`useEffect`が呼び出された時に、`addEventListener`のコールバックが`fruit`をキャプチャするのですが、今回は`useEffect`の第二引数を空にしているため、マウント時のみしか`useEffect`が実行されません。つまり`fruit`の値がマウント時以降、更新されないわけです。
 
-その結果、常に`addEventLisner`内の`fruit`が初期値(orange)を参照することになります。
+その結果、常に`addEventListener`内の`fruit`が初期値(orange)を参照することになります。
 
 ## 解決策
 
