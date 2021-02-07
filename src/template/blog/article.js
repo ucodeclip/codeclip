@@ -1,12 +1,12 @@
-import React from "react"
-import { graphql } from "gatsby"
-import styled from "styled-components"
-import { calcSpVw } from '../../styles/styled-function'
+import React from "react";
+import { graphql } from "gatsby";
+import styled from "styled-components";
+import { calcSpVw } from "../../styles/styled-function";
 import Layout from "../../components/layout/layout";
-import SEO from "../../components/seo/seo"
-import Tag from "../../components/page-blog-article/tag"
-import Date from "../../components/page-blog-article/date"
-import Pager from "../../components/page-blog-article/pager"
+import SEO from "../../components/seo/seo";
+import Tag from "../../components/page-blog-article/tag";
+import Date from "../../components/page-blog-article/date";
+import Pager from "../../components/page-blog-article/pager";
 
 const Main = styled.main`
   display: block;
@@ -38,58 +38,58 @@ const Main = styled.main`
       background: #232946;
     } */
   }
-`
+`;
 const ArticleHead = styled.div`
   position: relative;
   background: #232946;
-  @media screen and (min-width:813px) {
+  @media screen and (min-width: 813px) {
     padding: 100px 0 60px;
   }
-  @media screen and (max-width:812px) {
+  @media screen and (max-width: 812px) {
     padding: ${calcSpVw(180)} 0 ${calcSpVw(60)};
   }
-`
+`;
 const ArticleHeadContainer = styled.div`
   font-weight: bold;
   margin: 0 auto;
   color: #fff;
-  @media screen and (min-width:813px) {
+  @media screen and (min-width: 813px) {
     max-width: 1000px;
     width: 90%;
     padding: 0 3%;
   }
-  @media screen and (max-width:812px) {
+  @media screen and (max-width: 812px) {
     width: 90%;
     padding: 0 3%;
   }
-`
+`;
 const Title = styled.h1`
   font-weight: bold;
   color: #fff;
-  @media screen and (min-width:813px) {
+  @media screen and (min-width: 813px) {
     padding-bottom: 30px;
     font-size: 30px;
   }
-  @media screen and (max-width:812px) {
+  @media screen and (max-width: 812px) {
     padding-bottom: ${calcSpVw(60)};
-    font-size: ${calcSpVw(50)}
+    font-size: ${calcSpVw(50)};
   }
-`
+`;
 const Article = styled.article`
   position: relative;
   margin: 0 auto;
   background: #fffffe;
   box-sizing: border-box;
-  @media screen and (min-width:813px) {
+  @media screen and (min-width: 813px) {
     max-width: 1000px;
     width: 90%;
     padding: 60px 0;
   }
-  @media screen and (max-width:812px) {
+  @media screen and (max-width: 812px) {
     width: 90%;
     padding: ${calcSpVw(80)} 0;
   }
-`
+`;
 const ArticleBody = styled.div`
   .language-text {
     white-space: -moz-pre-wrap;
@@ -98,10 +98,10 @@ const ArticleBody = styled.div`
     white-space: pre-wrap;
     word-wrap: break-word;
   }
-  @media screen and (min-width:813px) {
+  @media screen and (min-width: 813px) {
     font-size: 16px;
     > *:first-child {
-      margin-top: 0!important;
+      margin-top: 0 !important;
     }
     h2 {
       margin-top: 40px;
@@ -138,53 +138,39 @@ const ArticleBody = styled.div`
           left: 1rem;
           width: 5px;
           height: 3px;
-          background:#ddd;
+          background: #ddd;
         }
       }
     }
     .gatsby-code-title {
       display: inline-block;
       margin-top: 20px;
-      margin-bottom: -.5rem;
-      padding: .2em .5em;
+      margin-bottom: -0.5rem;
+      padding: 0.2em 0.5em;
       border-radius: 2px 2px 0 0;
-      background-color: #FCA451;
-      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-      font-size: .8em;
+      background-color: #fca451;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      font-size: 0.8em;
       color: #fff;
       + .gatsby-highlight {
-      margin-top: 0;
-    }
+        margin-top: 0;
+      }
     }
     .gatsby-highlight {
-      margin-top: 20px
+      margin-top: 20px;
     }
     .gatsby-resp-image-wrapper {
       margin-bottom: 40px;
     }
     a {
-      position: relative;
       color: #4ab4fc;
-      cursor: pointer;
+      text-decoration: underline;
       word-break: break-all;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        bottom: 0;
-        background: #4ab4fc;
-      }
-      &:hover {
-        &::before {
-          opacity: 0
-        }
-      }
     }
   }
-  @media screen and (max-width:812px) {
+  @media screen and (max-width: 812px) {
     > *:first-child {
-      margin-top: 0!important;
+      margin-top: 0 !important;
     }
     h2 {
       margin-top: ${calcSpVw(80)};
@@ -219,19 +205,19 @@ const ArticleBody = styled.div`
           left: 1rem;
           width: ${calcSpVw(10)};
           height: ${calcSpVw(6)};
-          background:#ddd;
+          background: #ddd;
         }
       }
     }
     .gatsby-code-title {
       display: inline-block;
       margin-top: ${calcSpVw(40)};
-      margin-bottom: -.5rem;
-      padding: .2em .5em;
+      margin-bottom: -0.5rem;
+      padding: 0.2em 0.5em;
       border-radius: ${calcSpVw(4)} ${calcSpVw(4)} 0 0;
-      background-color: #FCA451;
-      font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-      font-size: .8em;
+      background-color: #fca451;
+      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+      font-size: 0.8em;
       color: #fff;
       + .gatsby-highlight {
         margin-top: 0;
@@ -249,9 +235,9 @@ const ArticleBody = styled.div`
       word-break: break-all;
     }
   }
-`
+`;
 
-const BlogArticlePage = (props) => {
+const BlogArticlePage = props => {
   const pageContext = props.pageContext;
   const pageInfo = props.data.allMarkdownRemark.pageInfo;
   const htmlContents = props.data.markdownRemark.html;
@@ -264,12 +250,7 @@ const BlogArticlePage = (props) => {
 
   return (
     <Layout page="blog-article">
-      <SEO
-        title={title}
-        description={excerpt}
-        type="article"
-        path={path}
-      />
+      <SEO title={title} description={excerpt} type="article" path={path} />
       <Main>
         <ArticleHead>
           <ArticleHeadContainer>
@@ -279,19 +260,23 @@ const BlogArticlePage = (props) => {
           </ArticleHeadContainer>
         </ArticleHead>
         <Article>
-          <ArticleBody dangerouslySetInnerHTML={{ __html: htmlContents }}></ArticleBody>
+          <ArticleBody
+            dangerouslySetInnerHTML={{ __html: htmlContents }}
+          ></ArticleBody>
         </Article>
         <Pager pageInfo={pageInfo} pageContext={pageContext} />
       </Main>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
-  query blogQuery ($id: String!, $number: Int) {
-    allMarkdownRemark (
-      sort:{fields: frontmatter___date, order: DESC}, limit: 1, skip: $number
-      ) {
+  query blogQuery($id: String!, $number: Int) {
+    allMarkdownRemark(
+      sort: { fields: frontmatter___date, order: DESC }
+      limit: 1
+      skip: $number
+    ) {
       pageInfo {
         currentPage
         hasNextPage
@@ -300,7 +285,7 @@ export const query = graphql`
         perPage
       }
     }
-    markdownRemark(id: {eq: $id}) {
+    markdownRemark(id: { eq: $id }) {
       frontmatter {
         date(formatString: "YYYY-MM-DD")
         update(formatString: "YYYY-MM-DD")
@@ -312,6 +297,6 @@ export const query = graphql`
       excerpt(pruneLength: 200)
     }
   }
-`
+`;
 
-export default BlogArticlePage
+export default BlogArticlePage;

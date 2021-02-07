@@ -1,0 +1,46 @@
+.main {
+  min-height: 100vmax;
+  box-sizing: border-box;
+  @media screen and (min-width: 813px) {
+    width: 90%;
+    margin: 0 auto;
+    padding: 60px 0;
+  }
+  @media screen and (max-width: 812px) {
+    padding: 16vw 5.333vw 0;
+  }
+}
+.title {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.5;
+  @media screen and (max-width: 812px) {
+    margin-top: 5.333vw;
+    font-size: 5.333vw;
+  }
+}
+.selected {
+  margin-top: 20px;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+  @media screen and (max-width: 812px) {
+    margin-top: 5.333vw;
+    font-size: 4.267vw;
+  }
+}
+.btns {
+  margin-top: 20px;
+  @media screen and (max-width: 812px) {
+    margin-top: 5.333vw;
+  }
+  button {
+    &:nth-child(n + 2) {
+      margin-left: 20px;
+      @media screen and (max-width: 812px) {
+        margin-left: 5.333vw;
+      }
+    }
+  }
+}
