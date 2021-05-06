@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import LayoutDemo from "../../../components/layout/layout-demo";
-import SEO from "../../../components/seo/seo";
+import Seo from "../../../components/seo/seo";
 import styles from "./index.module.scss";
 
 const classNames = [styles.block, styles.scroll];
@@ -24,7 +24,7 @@ const Demo1 = () => {
 
   return (
     <LayoutDemo>
-      <SEO
+      <Seo
         title="【Demoページ】Intersection Observerの実装"
         description="【Demoページ】Intersection Observerの実装"
         type="article"

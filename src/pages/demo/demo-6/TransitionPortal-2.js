@@ -4,7 +4,7 @@ import TransitionLink, {
 } from "gatsby-plugin-transition-link";
 import gsap from "gsap";
 import LayoutDemo from "../../../components/layout/layout-demo";
-import SEO from "../../../components/seo/seo";
+import Seo from "../../../components/seo/seo";
 import styles from "./index.module.scss";
 
 const TransitionPortal2 = () => {
@@ -26,7 +26,7 @@ const TransitionPortal2 = () => {
 
   return (
     <LayoutDemo>
-      <SEO
+      <Seo
         title="【Demoページ】ページ遷移アニメーションTransitionPortal-2の実装"
         description="【Demoページ】ページ遷移アニメーションTransitionPortal-2の実装"
         type="article"

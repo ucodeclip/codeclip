@@ -1,23 +1,23 @@
-import React from "react"
-import { graphql } from "gatsby"
-import styled from "styled-components"
+import React from "react";
+import { graphql } from "gatsby";
+import styled from "styled-components";
 import Layout from "../components/layout/layout";
-import SEO from "../components/seo/seo"
+import Seo from "../components/seo/seo";
 import MainVisual from "../components/page-top/mainVisual/mainVisual";
-import Article from "../components/archive/article/article-wrap"
+import Article from "../components/archive/article/article-wrap";
 
 const Main = styled.div`
-  position:relative;
+  position: relative;
   background: #f9f9f9;
-  @media screen and (min-width:813px) {
+  @media screen and (min-width: 813px) {
   }
-  @media screen and (max-width:812px) {
+  @media screen and (max-width: 812px) {
   }
-`
-const IndexPage = (props) => {
+`;
+const IndexPage = props => {
   return (
     <Layout page="top">
-      <SEO
+      <Seo
         title="Code Clip Blog"
         description="フロントエンドエンジニアの雑記帳"
         type="website"
@@ -27,14 +27,12 @@ const IndexPage = (props) => {
         <Article data={props.data} />
       </Main>
     </Layout>
-  )
-}
+  );
+};
 
 export const query = graphql`
   query indexQuery {
-    allMarkdownRemark (
-      sort: {fields: frontmatter___date, order: DESC}
-      ) {
+    allMarkdownRemark(sort: { fields: frontmatter___date, order: DESC }) {
       edges {
         node {
           excerpt(pruneLength: 120, truncate: true)
@@ -49,6 +47,6 @@ export const query = graphql`
       }
     }
   }
-`
+`;
 
-export default IndexPage
+export default IndexPage;

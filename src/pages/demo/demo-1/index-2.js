@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import LayoutDemo from "../../../components/layout/layout-demo";
-import SEO from "../../../components/seo/seo";
+import Seo from "../../../components/seo/seo";
 import styles from "./index.module.scss";
 
 const ScrollComponent = ({ children }) => {
@@ -33,7 +33,7 @@ const ScrollComponent = ({ children }) => {
 const Demo2 = () => {
   return (
     <LayoutDemo>
-      <SEO
+      <Seo
         title="【Demoページ】Scrollアニメーションの実装（スクロールイベント編）"
         description="【Demoページ】Scrollアニメーションの実装（スクロールイベント編）"
         type="article"
