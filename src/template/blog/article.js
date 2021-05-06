@@ -3,7 +3,7 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import { calcSpVw } from "../../styles/styled-function";
 import Layout from "../../components/layout/layout";
-import SEO from "../../components/seo/seo";
+import Seo from "../../components/seo/seo";
 import Tag from "../../components/page-blog-article/tag";
 import Date from "../../components/page-blog-article/date";
 import Pager from "../../components/page-blog-article/pager";
@@ -250,7 +250,7 @@ const BlogArticlePage = props => {
 
   return (
     <Layout page="blog-article">
-      <SEO title={title} description={excerpt} type="article" path={path} />
+      <Seo title={title} description={excerpt} type="article" path={path} />
       <Main>
         <ArticleHead>
           <ArticleHeadContainer>

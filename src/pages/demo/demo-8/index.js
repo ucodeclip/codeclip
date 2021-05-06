@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import LayoutDemo from "../../../components/layout/layout-demo";
-import SEO from "../../../components/seo/seo";
+import Seo from "../../../components/seo/seo";
 import styles from "./index.module.scss";
 
 const Index = () => {
@@ -36,7 +36,7 @@ const Index = () => {
 
   return (
     <LayoutDemo>
-      <SEO
+      <Seo
         title="【Demoページ】useEffectの第二引数の配列を空にするとstateが更新されない件"
         description="【Demoページ】useEffectの第二引数の配列を空にするとstateが更新されない件"
         type="article"

@@ -1,13 +1,13 @@
 import React from "react";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 import LayoutDemo from "../../../components/layout/layout-demo";
-import SEO from "../../../components/seo/seo";
+import Seo from "../../../components/seo/seo";
 import styles from "./index.module.scss";
 
 const AniLink2 = () => {
   return (
     <LayoutDemo>
-      <SEO
+      <Seo
         title="【Demoページ】ページ遷移アニメーション AniLink の実装"
         description="【Demoページ】ページ遷移アニメーション AniLink の実装"
         type="article"

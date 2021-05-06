@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LayoutDemo from "../../../components/layout/layout-demo";
-import SEO from "../../../components/seo/seo";
+import Seo from "../../../components/seo/seo";
 import styles from "./index.module.scss";
 
 const Demo1 = () => {
@@ -23,7 +23,7 @@ const Demo1 = () => {
 
   return (
     <LayoutDemo>
-      <SEO
+      <Seo
         title="【Demoページ】Scroll量の取得"
         description="【Demoページ】Scroll量の取得"
         type="article"
