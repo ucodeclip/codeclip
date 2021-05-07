@@ -1,4 +1,7 @@
 module.exports = {
+  flags: {
+    FAST_DEV: true,
+  },
   siteMetadata: {
     title: `Code Clip Blog`,
     description: `フロントエンドエンジニアの雑記帳`,
@@ -62,7 +65,7 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-styled-components`,
+    `gatsby-plugin-emotion`,
     {
       resolve: `gatsby-plugin-sass`,
       options: {

@@ -1,5 +1,5 @@
 import React from "react"
-import styled from "styled-components"
+import styled from "@emotion/styled"
 import Article from "./article"
 import { calcSpVw } from '../../../styles/styled-function'
 

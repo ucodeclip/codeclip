@@ -1,8 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Header from "../header/header";
 import Footer from "../footer/footer";
-import GlobalStyle from "../../styles/styled-reset";
+import StyledReset from "../../styles/styled-reset";
 
 const Wrapper = styled.div`
   position: relative;
@@ -31,7 +31,7 @@ const Contents = styled.div`
 const layoutDemo = ({ children, page }) => {
   return (
     <Wrapper data-page={"demo"}>
-      <GlobalStyle />
+      <StyledReset />
       <Header page={"demo"} />
       <Contents>{children}</Contents>
       <Footer />
