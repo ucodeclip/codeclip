@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import { calcSpVw } from "../../styles/styled-function";
 import Layout from "../../components/layout/layout";
 import Seo from "../../components/seo/seo";
@@ -12,7 +12,7 @@ const Main = styled.main`
   display: block;
   box-sizing: border-box;
   background: #fff;
-  @media screen and (min-width:813px) {
+  @media screen and (min-width: 813px) {
     padding: 0 0 60px;
     min-height: calc(100vh - 60px);
     /* &::before {
@@ -25,7 +25,7 @@ const Main = styled.main`
       background: #232946;
     } */
   }
-  @media screen and (max-width:812px) {
+  @media screen and (max-width: 812px) {
     padding: 0 0 ${calcSpVw(60)};
     min-height: calc(100vh - ${calcSpVw(60)});
     /* &::before {
@@ -237,7 +237,7 @@ const ArticleBody = styled.div`
   }
 `;
 
-const BlogArticlePage = props => {
+const BlogArticlePage = (props) => {
   const pageContext = props.pageContext;
   const pageInfo = props.data.allMarkdownRemark.pageInfo;
   const htmlContents = props.data.markdownRemark.html;

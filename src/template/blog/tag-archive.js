@@ -1,6 +1,6 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "styled-components";
+import styled from "@emotion/styled";
 import Layout from "../../components/layout/layout";
 import Seo from "../../components/seo/seo";
 import MainVisual from "../../components/tag-archive/main-visual/main-visual";
@@ -14,7 +14,7 @@ const Main = styled.div`
   @media screen and (max-width: 812px) {
   }
 `;
-const TagArchivePage = props => {
+const TagArchivePage = (props) => {
   const tag = props.pageContext.tag;
   const title = tag + "一覧";
   return (
