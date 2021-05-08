@@ -1,49 +1,33 @@
 import React from "react";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../styles/styled-function";
+import { css } from "@emotion/react";
+import { Color } from "constants/constants";
 
-const Footer = styled.footer`
+const footer = css`
   width: 100%;
   background: #232946;
   color: #fffffe;
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
-  }
 `;
-const FooterInner = styled.div`
+const footerInner = css`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
-  @media screen and (min-width: 813px) {
-    padding: 0 30px;
-    height: 60px;
-  }
-  @media screen and (max-width: 812px) {
-    height: ${calcSpVw(120)};
-    padding: 0 5%;
-  }
+  height: 40px;
 `;
 
-const FooterCopy = styled.small`
-  color: #fffffe;
-  @media screen and (min-width: 813px) {
-    font-size: 12px;
-  }
-  @media screen and (max-width: 812px) {
-    font-size: ${calcSpVw(24)};
-  }
+const footerCopy = css`
+  color: ${Color.white.dark};
+  font-size: 1.2rem;
 `;
 
 const FooterModule = () => {
   return (
-    <Footer>
-      <FooterInner>
-        <FooterCopy>&copy; 2020 CodeClip</FooterCopy>
-      </FooterInner>
-    </Footer>
+    <footer css={footer}>
+      <div css={footerInner}>
+        <small css={footerCopy}>&copy; 2020 CodeClip</small>
+      </div>
+    </footer>
   );
 };
 
