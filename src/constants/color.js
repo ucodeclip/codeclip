@@ -12,6 +12,7 @@ const Color = {
   },
   gray: {
     main: "#f9f9f9",
+    dark: "#dddddd",
   },
 };
 export default Color;

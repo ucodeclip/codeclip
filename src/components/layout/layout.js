@@ -1,33 +1,26 @@
 import React from "react";
-import styled from "@emotion/styled";
-import Header from "../header/header";
-import Footer from "../footer/footer";
-import StyledReset from "../../styles/styled-reset";
+import { css } from "@emotion/react";
+import Header from "components/header/header";
+import Footer from "components/footer/footer";
+import StyledReset from "styles/styled-reset";
+import { Color } from "constants/constants";
 
-const Wrapper = styled.div`
+const wrapper = css`
   position: relative;
-  color: #232946;
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
-  }
+  color: ${Color.navy.main};
 `;
-const Contents = styled.div`
+const contents = css`
   position: relative;
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
-  }
 `;
 
 const layout = ({ children, page }) => {
   return (
-    <Wrapper data-page={page}>
+    <div css={wrapper} data-page={page}>
       <StyledReset />
       <Header page={page} />
-      <Contents>{children}</Contents>
+      <div css={contents}>{children}</div>
       <Footer />
-    </Wrapper>
+    </div>
   );
 };
 export default layout;
