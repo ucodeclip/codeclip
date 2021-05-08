@@ -5,6 +5,7 @@ const Color = {
     main: "#eebbc3",
   },
   blue: {
+    light: "#4ab4fc",
     twitter: "#00aced",
   },
   navy: {
@@ -12,7 +13,7 @@ const Color = {
   },
   gray: {
     main: "#f9f9f9",
-    dark: "#dddddd",
+    dark: "#f5f5f5",
   },
 };
 export default Color;

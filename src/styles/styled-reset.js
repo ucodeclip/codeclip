@@ -111,9 +111,6 @@ const global = css`
     text-decoration: none;
     color: #232946;
   }
-  body {
-    line-height: 1;
-  }
   ol,
   ul {
     list-style: none;

@@ -1,69 +1,102 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../styles/styled-function";
+import { css } from "@emotion/react";
+import { Color } from "constants/constants";
 
-const PagerList = styled.ul`
+const list = css`
   display: flex;
   justify-content: center;
   position: relative;
+  max-width: 1000px;
   width: 90%;
+  margin: 30px auto 0;
   box-sizing: border-box;
-  @media screen and (min-width: 813px) {
-    max-width: 1000px;
-    margin: 30px auto 0;
-  }
-  @media screen and (max-width: 812px) {
-    margin: ${calcSpVw(60)} auto 0;
-  }
 `;
-const PagerItem = styled.li`
-  ${(props) => {
-    if (props.pos === "center") {
-      return { position: "relative" };
-    } else {
-      if (props.pos === "left") {
-        return { position: "absolute", left: "0", zIndex: 10 };
-      } else {
-        return { position: "absolute", right: "0", zIndex: 10 };
+const item = css`
+  position: absolute;
+  perspective: 500px;
+`;
+const prev = css`
+  left: 0;
+  a {
+    position: relative;
+    padding-left: 1.5rem;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto 0;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid ${Color.navy.main};
+      border-left: 2px solid ${Color.navy.main};
+      transform: rotateX(0deg) rotateZ(-45deg);
+      transition: all 0.2s ease-in-out;
+    }
+    &:hover {
+      &::before {
+        transform: rotateX(180deg) rotateZ(-45deg);
       }
     }
-  }};
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
   }
 `;
-const PagerLink = styled(Link)`
+const next = css`
+  right: 0;
+  a {
+    position: relative;
+    padding-right: 1.5rem;
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      margin: auto 0;
+      width: 10px;
+      height: 10px;
+      border-top: 2px solid ${Color.navy.main};
+      border-right: 2px solid ${Color.navy.main};
+      transform: rotateX(0) rotateZ(45deg);
+      transition: all 0.2s ease-in-out;
+    }
+    &:hover {
+      &::after {
+        transform: rotateX(180deg) rotateZ(45deg);
+      }
+    }
+  }
+`;
+const link = css`
   color: #232946;
   font-weight: bold;
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
-  }
+  font-size: 1.6rem;
 `;
 
 const PagerModule = (props) => {
   return (
-    <PagerList>
-      {props.pageInfo.hasNextPage ? (
-        <PagerItem pos="left">
-          <PagerLink to={props.pageContext.nextPath}>&lt; 前の記事</PagerLink>
-        </PagerItem>
-      ) : (
-        ""
+    <ul css={list}>
+      {props.pageInfo.hasNextPage && (
+        <li css={[item, prev]}>
+          <Link css={link} to={props.pageContext.nextPath}>
+            前の記事
+          </Link>
+        </li>
       )}
-      <PagerItem pos="center">
-        <PagerLink to="/">TOPへ戻る</PagerLink>
-      </PagerItem>
-      {props.pageInfo.hasPreviousPage ? (
-        <PagerItem pos="right">
-          <PagerLink to={props.pageContext.prevPath}>次の記事 &gt;</PagerLink>
-        </PagerItem>
-      ) : (
-        ""
+      <li>
+        <Link css={link} to="/">
+          TOPへ戻る
+        </Link>
+      </li>
+      {props.pageInfo.hasPreviousPage && (
+        <li css={[item, next]}>
+          <Link css={link} to={props.pageContext.prevPath}>
+            次の記事
+          </Link>
+        </li>
       )}
-    </PagerList>
+    </ul>
   );
 };
 

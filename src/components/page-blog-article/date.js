@@ -1,56 +1,32 @@
 import React from "react";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../styles/styled-function";
+import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config, library } from "@fortawesome/fontawesome-svg-core";
 import { faCalendar, faRedo } from "@fortawesome/free-solid-svg-icons";
 config.autoAddCss = false;
 library.add({ faCalendar, faRedo });
 
-const DateList = styled.div`
+const list = css`
   color: inherit;
   display: flex;
-  @media screen and (min-width: 813px) {
-    margin-top: 15px;
-  }
-  @media screen and (max-width: 812px) {
-    margin-top: ${calcSpVw(30)};
-  }
+  margin-top: 15px;
 `;
-const DateItem = styled.div`
+const item = css`
   display: flex;
   align-items: center;
   color: inherit;
-  @media screen and (min-width: 813px) {
-    &:nth-child(n + 2) {
-      margin-left: 10px;
-    }
-  }
-  @media screen and (max-width: 812px) {
-    &:nth-child(n + 2) {
-      margin-left: ${calcSpVw(20)};
-    }
+  & + & {
+    margin-left: 10px;
   }
   svg {
-    @media screen and (min-width: 813px) {
-      width: 15px;
-    }
-    @media screen and (max-width: 812px) {
-      width: ${calcSpVw(30)};
-    }
+    width: 15px;
   }
 `;
-const Date = styled.span`
+const dateWrap = css`
   display: inline-block;
   color: inherit;
-  @media screen and (min-width: 813px) {
-    margin-left: 5px;
-    font-size: 14px;
-  }
-  @media screen and (max-width: 812px) {
-    margin-left: ${calcSpVw(10)};
-    font-size: ${calcSpVw(28)};
-  }
+  margin-left: 5px;
+  font-size: 1.4rem;
 `;
 
 const UpDate = ({ date, update }) => {
@@ -58,22 +34,22 @@ const UpDate = ({ date, update }) => {
     return null;
   }
   return (
-    <DateItem type="update">
+    <li css={item}>
       <FontAwesomeIcon icon={faRedo} />
-      <Date>{update}</Date>
-    </DateItem>
+      <span css={dateWrap}>{update}</span>
+    </li>
   );
 };
 
 const DateModule = ({ date, update }) => {
   return (
-    <DateList>
-      <DateItem>
+    <ul css={list}>
+      <li css={item}>
         <FontAwesomeIcon icon={faCalendar} />
-        <Date>{date}</Date>
-      </DateItem>
+        <span css={dateWrap}>{date}</span>
+      </li>
       <UpDate date={date} update={update} />
-    </DateList>
+    </ul>
   );
 };
 
