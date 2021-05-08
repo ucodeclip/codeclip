@@ -85,17 +85,14 @@ const global = css`
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 16px;
     font: inherit;
     line-height: 1.5;
+    font-size: 10px;
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
+      "Hiragino Sans", Meiryo, sans-serif;
     letter-spacing: 0.04em;
     vertical-align: bottom;
     color: #232946;
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-      "Hiragino Sans", Meiryo, sans-serif;
-    @media screen and (max-width: 812px) {
-      font-size: 4.267vw;
-    }
   }
   article,
   aside,
@@ -115,7 +112,7 @@ const global = css`
     color: #232946;
   }
   body {
-    line-height: 1.5;
+    line-height: 1;
   }
   ol,
   ul {

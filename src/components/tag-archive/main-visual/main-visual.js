@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import { calcSpVw } from "../../../styles/styled-function";
 
-const Visual = styled.div`
+const visual = css`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,6 +18,7 @@ const Visual = styled.div`
     height: ${calcSpVw(400)};
   }
 `;
+
 const VisualBlock = styled.div`
   position: relative;
   text-align: center;
@@ -34,11 +36,11 @@ const Title = styled.h1`
 
 const MainVisual = (props) => {
   return (
-    <Visual>
+    <div css={visual}>
       <VisualBlock>
         <Title>Tag: {props.tag} 一覧</Title>
       </VisualBlock>
-    </Visual>
+    </div>
   );
 };
 

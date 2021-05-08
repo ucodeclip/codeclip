@@ -1,59 +1,49 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../../styles/styled-function";
-import Tag from "./tag";
-import Date from "./date.js";
+import { css } from "@emotion/react";
+import Tag from "components/archive/article/tag";
+import Date from "components/archive/article/date";
+import { Color } from "constants/constants";
+import { mq } from "styles/styled-function";
 
-const Article = styled.article`
+const article = css`
   position: relative;
   background: #fffffe;
-  color: #232946;
-  @media screen and (min-width: 813px) {
+  color: ${Color.navy.main};
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+  & + & {
+    margin-top: 24px;
+  }
+  ${mq("max", "md")} {
+    padding: 5%;
+    & + & {
+      margin-top: 5%;
+    }
+  }
+  ${mq("min", "md")} {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
     padding: 20px 3%;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-    border-radius: 3px;
     box-sizing: border-box;
-    transition: all 0.3s ease-out;
-    &:nth-child(n + 2) {
-      margin-top: 20px;
-    }
+    transition: background-color 0.2s ease-in-out;
     &:hover {
-      opacity: 0.6;
-    }
-  }
-  @media screen and (max-width: 812px) {
-    box-shadow: 0 0 ${calcSpVw(10)} rgba(0, 0, 0, 0.2);
-    padding: ${calcSpVw(40)};
-    border-radius: ${calcSpVw(6)};
-    &:nth-child(n + 2) {
-      margin-top: ${calcSpVw(40)};
+      background: rgba(35, 41, 70, 0.1);
     }
   }
 `;
-const ArticleTitle = styled.h2`
+const articleTitle = css`
   color: inherit;
+  font-size: 2rem;
   font-weight: bold;
-  @media screen and (min-width: 813px) {
-    font-size: 22px;
-  }
-  @media screen and (max-width: 812px) {
-    font-size: ${calcSpVw(44)};
-  }
 `;
-const ArticleText = styled.p`
+const articleText = css`
   color: inherit;
-  @media screen and (min-width: 813px) {
-    margin-top: 10px;
-  }
-  @media screen and (max-width: 812px) {
-    margin-top: ${calcSpVw(20)};
-  }
+  margin-top: 10px;
+  font-size: 1.6rem;
 `;
-const ArticleLink = styled(Link)`
+const articleLink = css`
   position: absolute;
   top: 0;
   left: 0;
@@ -62,10 +52,6 @@ const ArticleLink = styled(Link)`
   display: block;
   color: inherit;
   z-index: 5;
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
-  }
 `;
 
 const ArticleModule = (props) => {
@@ -78,13 +64,13 @@ const ArticleModule = (props) => {
   const tag = formatter.tag;
 
   return (
-    <Article>
-      <ArticleLink to={slug}></ArticleLink>
-      <ArticleTitle>{title}</ArticleTitle>
-      <ArticleText>{text}</ArticleText>
+    <article css={article}>
+      <Link css={articleLink} to={slug}></Link>
+      <h2 css={articleTitle}>{title}</h2>
+      <p css={articleText}>{text}</p>
       <Date date={date} update={update} />
       <Tag content={tag} />
-    </Article>
+    </article>
   );
 };
 

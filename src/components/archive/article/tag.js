@@ -1,107 +1,84 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../../styles/styled-function";
+import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
+import { Color } from "constants/constants";
+import { mq } from "styles/styled-function";
 library.add(faTags);
 
-const TagWrap = styled.div`
+const sortFunc = (a, b) => {
+  a = a.toString().toLowerCase();
+  b = b.toString().toLowerCase();
+  if (a < b) {
+    return -1;
+  } else {
+    return 1;
+  }
+};
+
+const tagWrap = css`
   position: relative;
   display: flex;
   align-items: center;
+  margin-top: 12px;
   [data-icon] {
-    color: #eebbc3;
-  }
-  @media screen and (min-width: 813px) {
-    margin-top: 12.5px;
-  }
-  @media screen and (max-width: 812px) {
-    margin-top: ${calcSpVw(25)};
+    color: ${Color.pink.main};
   }
   svg {
-    @media screen and (min-width: 813px) {
-      width: 20px;
-    }
-    @media screen and (max-width: 812px) {
-      width: ${calcSpVw(40)};
-    }
+    width: 20px;
   }
 `;
-const TagList = styled.ul`
+const tagList = css`
   display: flex;
   flex-wrap: wrap;
-  @media screen and (min-width: 813px) {
-    margin: -5px -5px 0 0;
-  }
-  @media screen and (max-width: 812px) {
-    margin: ${calcSpVw(-10)} ${calcSpVw(-10)} 0 0;
-  }
+  margin: -5px -5px 0 0;
 `;
-const TagItem = styled.li`
-  @media screen and (min-width: 813px) {
-    margin: 5px 5px 0px 5px;
-  }
-  @media screen and (max-width: 812px) {
-    margin: ${calcSpVw(10)};
-    margin-bottom: 0;
-  }
+const tagItem = css`
+  margin: 5px 5px 0px 5px;
 `;
-const TagLink = styled(Link)`
+const tagLink = css`
   position: relative;
   z-index: 10;
   display: block;
-  color: #fffffe;
-  background: #eebbc3;
-  transition: all 0.3s ease-out;
+  color: ${Color.white.dark};
+  background: ${Color.pink.main};
+  transition: all 0.2s ease-in-out;
   font-weight: bold;
   box-sizing: border-box;
-  @media screen and (min-width: 813px) {
-    font-size: 12px;
-    padding: 3px;
-    border: 2px solid #eebbc3;
-    border-radius: 1px;
+  font-size: 1.2rem;
+  padding: 3px;
+  border: 2px solid ${Color.pink.main};
+  border-radius: 1px;
+  ${mq("min", "md")} {
     &:hover {
-      background: #fffffe;
-      color: #eebbc3;
+      background: ${Color.white.dark};
+      color: ${Color.pink.main};
     }
-  }
-  @media screen and (max-width: 812px) {
-    font-size: ${calcSpVw(24)};
-    padding: ${calcSpVw(6)};
-    border-radius: ${calcSpVw(2)};
   }
 `;
 
 const TagModule = (props) => {
   const tagArray = props.content;
-  const sortFunc = (a, b) => {
-    a = a.toString().toLowerCase();
-    b = b.toString().toLowerCase();
-    if (a < b) {
-      return -1;
-    } else {
-      return 1;
-    }
-  };
-
   tagArray.sort(sortFunc);
 
   return (
-    <TagWrap>
+    <div css={tagWrap}>
       <FontAwesomeIcon icon={faTags} />
-      <TagList>
+      <ul css={tagList}>
         {tagArray.map((v, i) => {
           const slug = "/blog/tags/" + v;
           return (
-            <TagItem key={i}>
-              <TagLink to={slug}>{v}</TagLink>
-            </TagItem>
+            <li key={i} css={tagItem}>
+              <Link css={tagLink} to={slug}>
+                {v}
+              </Link>
+            </li>
           );
         })}
-      </TagList>
-    </TagWrap>
+      </ul>
+    </div>
   );
 };
 

@@ -1,21 +1,18 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "@emotion/styled";
+import { css } from "@emotion/react";
+import { Color } from "constants/constants";
 import Layout from "../components/layout/layout";
 import Seo from "../components/seo/seo";
 import MainVisual from "../components/page-top/mainVisual/mainVisual";
 import Article from "../components/archive/article/article-wrap";
 
-const Main = styled.div`
+const main = css`
   position: relative;
-  background: #f9f9f9;
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
-  }
+  background: ${Color.gray.main};
 `;
 
-const IndexPage = (props) => {
+const IndexPage = ({ data }) => {
   return (
     <Layout page="top">
       <Seo
@@ -24,9 +21,9 @@ const IndexPage = (props) => {
         type="website"
       />
       <MainVisual />
-      <Main>
-        <Article data={props.data} />
-      </Main>
+      <div css={main}>
+        <Article data={data} />
+      </div>
     </Layout>
   );
 };

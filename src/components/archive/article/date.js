@@ -1,53 +1,32 @@
 import React from "react";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../../styles/styled-function";
+import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { config, library } from "@fortawesome/fontawesome-svg-core";
 import { faCalendar, faRedo } from "@fortawesome/free-solid-svg-icons";
 config.autoAddCss = false;
 library.add({ faCalendar, faRedo });
 
-const DateList = styled.div`
+const dateWrap = css`
   color: inherit;
   display: flex;
-  @media screen and (min-width: 813px) {
-    margin-top: 15px;
-  }
-  @media screen and (max-width: 812px) {
-    margin-top: ${calcSpVw(30)};
-  }
+  margin-top: 10px;
 `;
-const DateItem = styled.div`
+const dateItem = css`
   display: flex;
-  align-items: ${(props) =>
-    props.type === "update" ? "center" : "flex-start"};
+  align-items: center;
   color: inherit;
-  @media screen and (min-width: 813px) {
-    margin-left: ${(props) => (props.type === "update" ? "10px" : "0")};
-  }
-  @media screen and (max-width: 812px) {
-    margin-left: ${(props) => (props.type === "update" ? calcSpVw(20) : "0")};
+  &[data-type="update"] {
+    margin-left: 10px;
   }
   svg {
-    @media screen and (min-width: 813px) {
-      width: 15px;
-    }
-    @media screen and (max-width: 812px) {
-      width: ${calcSpVw(30)};
-    }
+    width: 15px;
   }
 `;
-const Date = styled.span`
+const itemDate = css`
   display: inline-block;
   color: inherit;
-  @media screen and (min-width: 813px) {
-    margin-left: 5px;
-    font-size: 14px;
-  }
-  @media screen and (max-width: 812px) {
-    margin-left: ${calcSpVw(10)};
-    font-size: ${calcSpVw(28)};
-  }
+  margin-left: 5px;
+  font-size: 1.4rem;
 `;
 
 const UpDate = ({ date, update }) => {
@@ -55,22 +34,24 @@ const UpDate = ({ date, update }) => {
     return null;
   }
   return (
-    <DateItem type="update">
+    <div data-type="update" css={dateItem}>
       <FontAwesomeIcon icon={faRedo} />
-      <Date>{update}</Date>
-    </DateItem>
+      <span css={itemDate}>{update}</span>
+    </div>
   );
 };
 
 const DateModule = ({ date, update }) => {
   return (
-    <DateList>
-      <DateItem>
+    <div css={dateWrap}>
+      <div css={dateItem}>
         <FontAwesomeIcon icon={faCalendar} />
-        <Date>{date}</Date>
-      </DateItem>
+        <span data-type="publish" css={itemDate}>
+          {date}
+        </span>
+      </div>
       <UpDate date={date} update={update} />
-    </DateList>
+    </div>
   );
 };
 
