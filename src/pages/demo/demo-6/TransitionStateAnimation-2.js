@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import TransitionLink, { TransitionState } from "gatsby-plugin-transition-link";
 import gsap from "gsap";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const TransitionTarget = ({ mount, status }) => {
   const target = useRef(null);
-  const entryAnimation = target => {
+  const entryAnimation = (target) => {
     gsap.to(target, { x: 0, duration: 1, opacity: 1 });
   };
   if (mount && status === "entered") {
@@ -23,10 +23,10 @@ const TransitionTarget = ({ mount, status }) => {
 };
 
 const TransitionStateAnimation2 = () => {
-  const exitAnimation = node => {
+  const exitAnimation = (node) => {
     gsap.to(node, { x: 100, duration: 1, opacity: 0 });
   };
-  const entryAnimation = node => {
+  const entryAnimation = (node) => {
     gsap.from(node, { x: 100, duration: 1, opacity: 0 });
   };
   return (

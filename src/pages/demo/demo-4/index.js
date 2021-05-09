@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const classNames = [styles.block, styles.scroll];
@@ -9,8 +9,8 @@ const Demo1 = () => {
   //DOMの取得にuseRef()を使う
   const target = useRef(null);
   useEffect(() => {
-    const cb = entries => {
-      entries.forEach(entry => {
+    const cb = (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           console.log("in");
         } else {

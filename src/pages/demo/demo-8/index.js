@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const Index = () => {
@@ -8,7 +8,7 @@ const Index = () => {
   const [loading, setLoading] = useState(true);
   const ws = useRef();
 
-  const selectFruit = e => {
+  const selectFruit = (e) => {
     ws.current.send(e.currentTarget.getAttribute("data-fruit"));
   };
 
@@ -16,19 +16,19 @@ const Index = () => {
     const url = "wss://echo.websocket.org";
     ws.current = new WebSocket(url);
 
-    ws.current.addEventListener("open", e => {
+    ws.current.addEventListener("open", (e) => {
       console.log("接続開始");
       setLoading(false);
     });
 
-    ws.current.addEventListener("message", e => {
+    ws.current.addEventListener("message", (e) => {
       if (fruit === e.data) {
         alert("Select different fruit.");
       }
       setFruit(e.data);
     });
 
-    ws.current.addEventListener("error", e => {
+    ws.current.addEventListener("error", (e) => {
       console.log("エラー : " + e.data);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

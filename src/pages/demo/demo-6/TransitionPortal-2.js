@@ -3,8 +3,8 @@ import TransitionLink, {
   TransitionPortal,
 } from "gatsby-plugin-transition-link";
 import gsap from "gsap";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const TransitionPortal2 = () => {

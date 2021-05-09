@@ -25,7 +25,7 @@ const FooterModule = () => {
   return (
     <footer css={footer}>
       <div css={footerInner}>
-        <small css={footerCopy}>&copy; 2020 CodeClip</small>
+        <small css={footerCopy}>&copy; 2021 CodeClipBlog</small>
       </div>
     </footer>
   );

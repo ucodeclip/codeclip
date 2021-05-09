@@ -1,15 +1,15 @@
 import React from "react";
 import TransitionLink from "gatsby-plugin-transition-link";
 import gsap from "gsap";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const TransitionLink2 = () => {
-  const exitAnimation = node => {
+  const exitAnimation = (node) => {
     gsap.to(node, { y: 100, duration: 1, opacity: 0 });
   };
-  const enterAnimation = node => {
+  const enterAnimation = (node) => {
     gsap.from(node, { y: 100, duration: 1, opacity: 0 });
   };
   return (
