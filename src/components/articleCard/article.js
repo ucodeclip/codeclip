@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
 import { css } from "@emotion/react";
-import Tag from "components/archive/article/tag";
-import Date from "components/archive/article/date";
+import Tag from "components/articleCard/tag";
+import Date from "components/articleCard/date";
 import { Color } from "constants/constants";
 import { mq } from "styles/styled-function";
 
