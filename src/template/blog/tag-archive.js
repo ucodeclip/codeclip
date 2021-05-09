@@ -3,14 +3,40 @@ import { graphql } from "gatsby";
 import { css } from "@emotion/react";
 import Layout from "components/layout/layout";
 import Seo from "components/seo/seo";
-import MainVisual from "components/tag-archive/main-visual/main-visual";
-import Article from "components/archive/article/article-wrap";
+import Article from "components/articleCard/article";
 import { Color } from "constants/constants";
 
 const main = css`
   position: relative;
   background: ${Color.gray.main};
 `;
+const articleList = css`
+  box-sizing: border-box;
+  width: 90%;
+  margin: 0 auto;
+  padding: 5% 0;
+  min-height: calc(100vh - 30vh - 60px);
+`;
+const visual = css`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background: ${Color.navy.main};
+  height: 30vh;
+  min-height: 200px;
+  margin: 0 auto;
+`;
+const visualBlock = css`
+  position: relative;
+  text-align: center;
+`;
+const visualTitle = css`
+  color: ${Color.white.dark};
+  font-weight: bold;
+  font-size: 2.4rem;
+`;
+
 const TagArchivePage = (props) => {
   const tag = props.pageContext.tag;
   const title = tag + "一覧";
@@ -22,8 +48,16 @@ const TagArchivePage = (props) => {
         type="article"
       />
       <div css={main}>
-        <MainVisual tag={tag} />
-        <Article data={props.data} />
+        <div css={visual}>
+          <div css={visualBlock}>
+            <h1 css={visualTitle}>Tag: {tag} 一覧</h1>
+          </div>
+        </div>
+        <div css={articleList}>
+          {props.data.allMarkdownRemark.edges.map((v, i) => {
+            return <Article content={v} key={i} />;
+          })}
+        </div>
       </div>
     </Layout>
   );
