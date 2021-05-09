@@ -1,6 +1,7 @@
 module.exports = {
   flags: {
     FAST_DEV: true,
+    PRESERVE_WEBPACK_CACHE: true,
   },
   siteMetadata: {
     title: `Code Clip Blog`,
