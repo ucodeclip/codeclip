@@ -1,14 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const TargetComponent = ({ children }) => {
   const target = useRef(null);
   const [classNames, setClassNames] = useState([styles.block, styles.scroll]);
   useEffect(() => {
-    const cb = entries => {
-      entries.forEach(entry => {
+    const cb = (entries) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
           //クラスの付け替え
           setClassNames([styles.block, styles.scrollIn]);

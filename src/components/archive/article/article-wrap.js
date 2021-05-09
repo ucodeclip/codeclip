@@ -1,30 +1,29 @@
-import React from "react"
-import styled from "@emotion/styled"
-import Article from "./article"
-import { calcSpVw } from '../../../styles/styled-function'
+import React from "react";
+import { css } from "@emotion/react";
+import Article from "components/archive/article/article";
+import { calcSpVw, mq } from "styles/styled-function";
 
-const ArticleWrap = styled.div`
-  padding: 5%;
-  @media screen and (min-width:813px) {
-    padding: 30px 5%;
-    min-height: calc(100vh - 30vh - 60px);
-    box-sizing: border-box;
-  }
-  @media screen and (max-width:812px) {
-    padding: ${calcSpVw(60)} 5%;
+const wrapper = css`
+  box-sizing: border-box;
+  width: 90%;
+  margin: 0 auto;
+  padding: 5% 0;
+  ${mq("max", "md")} {
     min-height: calc(100vh - ${calcSpVw(400)} - ${calcSpVw(160)});
-    box-sizing: border-box;
   }
-`
+  ${mq("min", "md")} {
+    min-height: calc(100vh - 30vh - 60px);
+  }
+`;
 
 const ArticleWrapModule = (props) => {
   return (
-    <ArticleWrap>
-      {props.data.allMarkdownRemark.edges.map((v, i)=>{
-        return <Article content={v} key={i} />
+    <div css={wrapper}>
+      {props.data.allMarkdownRemark.edges.map((v, i) => {
+        return <Article content={v} key={i} />;
       })}
-    </ArticleWrap>
-  )
-}
+    </div>
+  );
+};
 
-export default ArticleWrapModule
+export default ArticleWrapModule;

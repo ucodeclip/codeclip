@@ -1,7 +1,7 @@
 import React from "react";
 import AniLink from "gatsby-plugin-transition-link/AniLink";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const AniLink1 = () => {

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
-import LayoutDemo from "../../../components/layout/layout-demo";
-import Seo from "../../../components/seo/seo";
+import LayoutDemo from "components/layout/layout-demo";
+import Seo from "components/seo/seo";
 import styles from "./index.module.scss";
 
 const ScrollComponent = ({ children }) => {

@@ -1,96 +1,111 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../styles/styled-function";
-import Layout from "../../components/layout/layout";
-import Seo from "../../components/seo/seo";
-import Tag from "../../components/page-blog-article/tag";
-import Date from "../../components/page-blog-article/date";
-import Pager from "../../components/page-blog-article/pager";
+import { css } from "@emotion/react";
+import Layout from "components/layout/layout";
+import Seo from "components/seo/seo";
+import Tag from "components/page-blog-article/tag";
+import Date from "components/page-blog-article/date";
+import Pager from "components/page-blog-article/pager";
+import { Color } from "constants/constants";
 
-const Main = styled.main`
+const main = css`
   display: block;
   box-sizing: border-box;
-  background: #fff;
-  @media screen and (min-width: 813px) {
-    padding: 0 0 60px;
-    min-height: calc(100vh - 60px);
-    /* &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 200px;
-      background: #232946;
-    } */
-  }
-  @media screen and (max-width: 812px) {
-    padding: 0 0 ${calcSpVw(60)};
-    min-height: calc(100vh - ${calcSpVw(60)});
-    /* &::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: ${calcSpVw(400)};
-      background: #232946;
-    } */
-  }
+  background: ${Color.white.dark};
+  padding: 0 0 60px;
+  min-height: calc(100vh - 60px);
 `;
-const ArticleHead = styled.div`
+const articleHead = css`
   position: relative;
-  background: #232946;
-  @media screen and (min-width: 813px) {
-    padding: 100px 0 60px;
-  }
-  @media screen and (max-width: 812px) {
-    padding: ${calcSpVw(180)} 0 ${calcSpVw(60)};
-  }
+  background: ${Color.navy.main};
+  padding: 80px 0 50px;
 `;
-const ArticleHeadContainer = styled.div`
-  font-weight: bold;
+const articleHeadContainer = css`
+  max-width: 1000px;
+  width: 90%;
   margin: 0 auto;
-  color: #fff;
-  @media screen and (min-width: 813px) {
-    max-width: 1000px;
-    width: 90%;
-    padding: 0 3%;
-  }
-  @media screen and (max-width: 812px) {
-    width: 90%;
-    padding: 0 3%;
-  }
-`;
-const Title = styled.h1`
+  padding: 0 3%;
+  color: ${Color.white.main};
   font-weight: bold;
-  color: #fff;
-  @media screen and (min-width: 813px) {
-    padding-bottom: 30px;
-    font-size: 30px;
-  }
-  @media screen and (max-width: 812px) {
-    padding-bottom: ${calcSpVw(60)};
-    font-size: ${calcSpVw(50)};
-  }
 `;
-const Article = styled.article`
+const articleTitle = css`
+  color: ${Color.white.main};
+  font-size: 2.4rem;
+  font-weight: bold;
+`;
+const articleDate = css`
+  margin-top: 30px;
+  color: ${Color.white.main};
+`;
+const article = css`
   position: relative;
   margin: 0 auto;
-  background: #fffffe;
+  background: ${Color.white.dark};
   box-sizing: border-box;
-  @media screen and (min-width: 813px) {
-    max-width: 1000px;
-    width: 90%;
-    padding: 60px 0;
-  }
-  @media screen and (max-width: 812px) {
-    width: 90%;
-    padding: ${calcSpVw(80)} 0;
-  }
+  max-width: 1000px;
+  width: 90%;
+  padding: 60px 0;
 `;
-const ArticleBody = styled.div`
+const articleBody = css`
+  font-size: 1.6rem;
+  > * + h2 {
+    margin-top: 40px;
+  }
+  > * + h3 {
+    margin-top: 30px;
+  }
+  > * + p {
+    margin-top: 20px;
+  }
+  h2,
+  h3 {
+    box-sizing: border-box;
+
+    line-height: 1.5;
+    font-weight: bold;
+  }
+  h2 {
+    font-size: 2rem;
+    padding: 10px 15px;
+    background: ${Color.gray.dark};
+    border-left: 5px solid ${Color.navy.main};
+  }
+  h3 {
+    font-size: 1.8rem;
+    padding: 10px 0;
+    border-bottom: 3px solid ${Color.navy.main};
+  }
+  p {
+    font-size: 1.6rem;
+  }
+  ul {
+    margin-top: 20px;
+    li {
+      position: relative;
+      margin-top: 10px;
+      padding-left: 2rem;
+      font-size: 1.6rem;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 1rem;
+        width: 5px;
+        height: 3px;
+        background: ${Color.navy.main};
+        transform: translate(-50%, 0);
+      }
+    }
+  }
+  a {
+    color: ${Color.blue.light};
+    text-decoration: underline;
+    word-break: break-all;
+    font-size: 1.6rem;
+  }
+  del {
+    font-size: 1.6rem;
+  }
   .language-text {
     white-space: -moz-pre-wrap;
     white-space: -pre-wrap;
@@ -98,142 +113,31 @@ const ArticleBody = styled.div`
     white-space: pre-wrap;
     word-wrap: break-word;
   }
-  @media screen and (min-width: 813px) {
-    font-size: 16px;
-    > *:first-child {
-      margin-top: 0 !important;
-    }
-    h2 {
-      margin-top: 40px;
-      padding: 10px 15px;
-      background: #f5f5f5;
-      border-left: 5px solid #232946;
-      box-sizing: border-box;
-      font-size: 20px;
-      line-height: 1.5;
-      font-weight: bold;
-    }
-    h3 {
-      margin-top: 30px;
-      padding: 10px 0;
-      border-bottom: 3px solid #232946;
-      box-sizing: border-box;
-      font-size: 20px;
-      line-height: 1.5;
-      font-weight: bold;
-    }
-    p {
-      margin-top: 20px;
-    }
-    ul {
-      margin-top: 20px;
-      li {
-        position: relative;
-        margin-top: 10px;
-        padding-left: 2rem;
-        &::before {
-          content: "";
-          position: absolute;
-          top: 10px;
-          left: 1rem;
-          width: 5px;
-          height: 3px;
-          background: #ddd;
-        }
-      }
-    }
-    .gatsby-code-title {
-      display: inline-block;
-      margin-top: 20px;
-      margin-bottom: -0.5rem;
-      padding: 0.2em 0.5em;
-      border-radius: 2px 2px 0 0;
-      background-color: #fca451;
-      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-      font-size: 0.8em;
-      color: #fff;
-      + .gatsby-highlight {
-        margin-top: 0;
-      }
-    }
-    .gatsby-highlight {
-      margin-top: 20px;
-    }
-    .gatsby-resp-image-wrapper {
-      margin-bottom: 40px;
-    }
-    a {
-      color: #4ab4fc;
-      text-decoration: underline;
-      word-break: break-all;
+  .gatsby-code-title {
+    display: inline-block;
+    margin-top: 20px;
+    margin-bottom: -0.5rem;
+    padding: 0.2em 0.5em;
+    border-radius: 2px 2px 0 0;
+    background-color: #fca451;
+    font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+    font-size: 1.2rem;
+    color: #fff;
+    + .gatsby-highlight {
+      margin-top: 0;
     }
   }
-  @media screen and (max-width: 812px) {
-    > *:first-child {
-      margin-top: 0 !important;
+  .gatsby-highlight {
+    margin-top: 20px;
+    * {
+      font-size: 1.6rem;
     }
-    h2 {
-      margin-top: ${calcSpVw(80)};
-      padding: ${calcSpVw(15)} ${calcSpVw(30)};
-      background: #f5f5f5;
-      border-left: ${calcSpVw(10)} solid #232946;
-      box-sizing: border-box;
-      font-size: ${calcSpVw(40)};
-      font-weight: bold;
+    pre {
+      margin-top: 0.5rem;
     }
-    h3 {
-      margin-top: ${calcSpVw(60)};
-      padding: ${calcSpVw(15)} ${calcSpVw(0)};
-      border-bottom: ${calcSpVw(6)} solid #232946;
-      box-sizing: border-box;
-      font-size: ${calcSpVw(40)};
-      font-weight: bold;
-    }
-    p {
-      margin-top: ${calcSpVw(40)};
-    }
-    ul {
-      margin-top: ${calcSpVw(40)};
-      li {
-        position: relative;
-        margin-top: ${calcSpVw(20)};
-        padding-left: 2rem;
-        &::before {
-          content: "";
-          position: absolute;
-          top: ${calcSpVw(20)};
-          left: 1rem;
-          width: ${calcSpVw(10)};
-          height: ${calcSpVw(6)};
-          background: #ddd;
-        }
-      }
-    }
-    .gatsby-code-title {
-      display: inline-block;
-      margin-top: ${calcSpVw(40)};
-      margin-bottom: -0.5rem;
-      padding: 0.2em 0.5em;
-      border-radius: ${calcSpVw(4)} ${calcSpVw(4)} 0 0;
-      background-color: #fca451;
-      font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
-      font-size: 0.8em;
-      color: #fff;
-      + .gatsby-highlight {
-        margin-top: 0;
-      }
-    }
-    .gatsby-highlight {
-      margin-top: ${calcSpVw(40)};
-    }
-    .gatsby-resp-image-wrapper {
-      margin-bottom: ${calcSpVw(80)};
-    }
-    a {
-      color: #4ab4fc;
-      text-decoration: underline;
-      word-break: break-all;
-    }
+  }
+  .gatsby-resp-image-wrapper {
+    margin-bottom: 40px;
   }
 `;
 
@@ -251,21 +155,24 @@ const BlogArticlePage = (props) => {
   return (
     <Layout page="blog-article">
       <Seo title={title} description={excerpt} type="article" path={path} />
-      <Main>
-        <ArticleHead>
-          <ArticleHeadContainer>
-            <Title>{title}</Title>
-            <Date date={date} update={update} />
+      <main css={main}>
+        <div css={articleHead}>
+          <div css={articleHeadContainer}>
+            <h1 css={articleTitle}>{title}</h1>
+            <div css={articleDate}>
+              <Date date={date} update={update} />
+            </div>
             <Tag tag={tag} />
-          </ArticleHeadContainer>
-        </ArticleHead>
-        <Article>
-          <ArticleBody
+          </div>
+        </div>
+        <article css={article}>
+          <div
+            css={articleBody}
             dangerouslySetInnerHTML={{ __html: htmlContents }}
-          ></ArticleBody>
-        </Article>
+          ></div>
+        </article>
         <Pager pageInfo={pageInfo} pageContext={pageContext} />
-      </Main>
+      </main>
     </Layout>
   );
 };

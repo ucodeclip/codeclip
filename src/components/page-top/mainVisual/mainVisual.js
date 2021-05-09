@@ -1,86 +1,57 @@
 import React from "react";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../../styles/styled-function";
+import { css } from "@emotion/react";
+import { Color } from "constants/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTwitter } from "@fortawesome/free-brands-svg-icons";
 library.add(faTwitter);
 
-const Visual = styled.div`
+const visual = css`
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: #232946;
-  background: hsla(230, 33%, 21%, 1);
+  background: ${Color.navy.main};
 `;
-const VisualInner = styled.div`
+const visualInner = css`
   position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  @media screen and (min-width: 813px) {
-    height: calc(100vh - 300px);
-    min-height: 600px;
-    margin: 0 auto;
-    max-width: 1000px;
-    width: 90%;
-  }
-  @media screen and (max-width: 812px) {
-    width: 90%;
-    margin: 0 auto;
-    height: ${calcSpVw(600)};
-  }
+  max-width: 1000px;
+  width: 90%;
+  height: calc(100vh - 300px);
+  min-height: 60vmin;
+  max-height: 100vmin;
+  margin: 0 auto;
 `;
-const VisualBlock = styled.div`
+const visualBlock = css`
   position: relative;
   text-align: center;
 `;
-const Title = styled.h1`
-  color: #fffffe;
+const title = css`
+  color: ${Color.white.dark};
+  font-size: 3rem;
   font-weight: bold;
-  @media screen and (min-width: 813px) {
-    font-size: 30px;
-  }
-  @media screen and (max-width: 812px) {
-    font-size: ${calcSpVw(60)};
-  }
 `;
-const Caption = styled.p`
+const caption = css`
+  margin-top: 15px;
+  color: ${Color.white.dark};
+  font-size: 1.6rem;
+  font-weight: bold;
   text-align: center;
-  color: #fffffe;
-  @media screen and (min-width: 813px) {
-    margin-top: 15px;
-    font-weight: bold;
-  }
-  @media screen and (max-width: 812px) {
-    margin-top: ${calcSpVw(30)};
-    font-weight: bold;
-  }
 `;
-const Sns = styled.div`
+const sns = css`
   position: absolute;
   right: 0;
-  @media screen and (min-width: 813px) {
-    bottom: 20px;
-  }
-  @media screen and (max-width: 812px) {
-    bottom: ${calcSpVw(40)};
-  }
+  bottom: 20px;
 `;
-const Twt = styled.a`
+const twt = css`
   display: inline-block;
-  color: #00aced;
-  @media screen and (min-width: 813px) {
-    font-size: 30px;
-    width: 30px;
-    height: 30px;
-  }
-  @media screen and (max-width: 812px) {
-    font-size: ${calcSpVw(60)};
-    width: ${calcSpVw(60)};
-    height: ${calcSpVw(60)};
-  }
+  width: 30px;
+  height: 30px;
+  color: ${Color.blue.twitter};
+  font-size: 3rem;
   svg {
     display: block;
   }
@@ -88,19 +59,24 @@ const Twt = styled.a`
 
 const MainVisual = () => {
   return (
-    <Visual>
-      <VisualInner>
-        <VisualBlock>
-          <Title>Code Clip Blog</Title>
-          <Caption>フロントエンドエンジニアの雑記帳</Caption>
-        </VisualBlock>
-        <Sns>
-          <Twt href="https://twitter.com/blog_clip" target="_blank">
+    <div css={visual}>
+      <div css={visualInner}>
+        <div css={visualBlock}>
+          <h1 css={title}>Code Clip Blog</h1>
+          <p css={caption}>フロントエンドエンジニアの雑記帳</p>
+        </div>
+        <div css={sns}>
+          <a
+            css={twt}
+            href="https://twitter.com/blog_clip"
+            rel="noreferrer"
+            target="_blank"
+          >
             <FontAwesomeIcon icon={faTwitter} />
-          </Twt>
-        </Sns>
-      </VisualInner>
-    </Visual>
+          </a>
+        </div>
+      </div>
+    </div>
   );
 };
 

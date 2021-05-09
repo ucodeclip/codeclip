@@ -1,48 +1,30 @@
 import React from "react";
 import { Link } from "gatsby";
-import styled from "@emotion/styled";
-import { calcSpVw } from "../../styles/styled-function";
+import { css } from "@emotion/react";
+import { Color } from "constants/constants";
 
-const Header = styled.header`
+const header = css`
   position: absolute;
   top: 0;
   left: 0;
   z-index: 100;
   width: 100%;
   background: #232946;
-  @media screen and (min-width: 813px) {
-    height: 60px;
-    .inner {
-      max-width: 100%;
-    }
-  }
-  @media screen and (max-width: 812px) {
-    height: ${calcSpVw(120)};
-  }
+  height: 60px;
 `;
-const Inner = styled.div`
+const inner = css`
   display: flex;
   align-items: center;
   height: 100%;
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
   box-sizing: border-box;
-  @media screen and (min-width: 813px) {
-    max-width: 1000px;
-    width: 90%;
-    margin: 0 auto;
-  }
-  @media screen and (max-width: 812px) {
-    width: 100%;
-    padding: 0 5%;
-  }
 `;
-const Logo = styled(Link)`
-  color: #fffffe;
+const logo = css`
+  color: ${Color.white.dark};
   font-weight: bold;
-  @media screen and (min-width: 813px) {
-    font-size: 16px;
-  }
-  @media screen and (max-width: 812px) {
-  }
+  font-size: 1.6rem;
 `;
 
 const HeaderModule = ({ page }) => {
@@ -50,12 +32,13 @@ const HeaderModule = ({ page }) => {
     return null;
   }
   return (
-    <Header id="header" page={page}>
-      <Inner className="inner">
-        <Logo to="/">Code Clip Blog</Logo>
-        {/* <Nav /> */}
-      </Inner>
-    </Header>
+    <header id="header" css={header} page={page}>
+      <div css={inner}>
+        <Link css={logo} to="/">
+          Code Clip Blog
+        </Link>
+      </div>
+    </header>
   );
 };
 

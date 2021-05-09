@@ -1,18 +1,15 @@
 import React from "react";
 import { graphql } from "gatsby";
-import styled from "@emotion/styled";
-import Layout from "../../components/layout/layout";
-import Seo from "../../components/seo/seo";
-import MainVisual from "../../components/tag-archive/main-visual/main-visual";
-import Article from "../../components/archive/article/article-wrap";
+import { css } from "@emotion/react";
+import Layout from "components/layout/layout";
+import Seo from "components/seo/seo";
+import MainVisual from "components/tag-archive/main-visual/main-visual";
+import Article from "components/archive/article/article-wrap";
+import { Color } from "constants/constants";
 
-const Main = styled.div`
+const main = css`
   position: relative;
-  background: #f9f9f9;
-  @media screen and (min-width: 813px) {
-  }
-  @media screen and (max-width: 812px) {
-  }
+  background: ${Color.gray.main};
 `;
 const TagArchivePage = (props) => {
   const tag = props.pageContext.tag;
@@ -24,10 +21,10 @@ const TagArchivePage = (props) => {
         description="フロントエンドエンジニアの雑記帳"
         type="article"
       />
-      <Main>
+      <div css={main}>
         <MainVisual tag={tag} />
         <Article data={props.data} />
-      </Main>
+      </div>
     </Layout>
   );
 };
