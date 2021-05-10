@@ -3,9 +3,9 @@ import { graphql } from "gatsby";
 import { css } from "@emotion/react";
 import Layout from "components/layout/layout";
 import Seo from "components/seo/seo";
-import Tag from "components/page-blog-article/tag";
-import Date from "components/page-blog-article/date";
-import Pager from "components/page-blog-article/pager";
+import Tag from "components/tag/tag";
+import Date from "components/date/date";
+import Pager from "components/pager/pager";
 import { Color } from "constants/constants";
 
 const main = css`
@@ -148,7 +148,7 @@ const BlogArticlePage = (props) => {
   const title = props.data.markdownRemark.frontmatter.title;
   const date = props.data.markdownRemark.frontmatter.date;
   const update = props.data.markdownRemark.frontmatter.update;
-  const tag = props.data.markdownRemark.frontmatter.tag;
+  const tags = props.data.markdownRemark.frontmatter.tag;
   const excerpt = props.data.markdownRemark.excerpt;
   const path = props.location.pathname;
 
@@ -162,7 +162,7 @@ const BlogArticlePage = (props) => {
             <div css={articleDate}>
               <Date date={date} update={update} />
             </div>
-            <Tag tag={tag} />
+            <Tag tags={tags} />
           </div>
         </div>
         <article css={article}>

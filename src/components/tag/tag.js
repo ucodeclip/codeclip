@@ -4,25 +4,16 @@ import { css } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTags } from "@fortawesome/free-solid-svg-icons";
+import { tagSort } from "utils/sort";
 import { Color } from "constants/constants";
 import { mq } from "styles/styled-function";
 library.add(faTags);
-
-const sortFunc = (a, b) => {
-  a = a.toString().toLowerCase();
-  b = b.toString().toLowerCase();
-  if (a < b) {
-    return -1;
-  } else {
-    return 1;
-  }
-};
 
 const tagWrap = css`
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 12px;
+  margin-top: 10px;
   [data-icon] {
     color: ${Color.pink.main};
   }
@@ -40,7 +31,6 @@ const tagItem = css`
 `;
 const tagLink = css`
   position: relative;
-  z-index: 10;
   display: block;
   color: ${Color.white.dark};
   background: ${Color.pink.main};
@@ -51,6 +41,7 @@ const tagLink = css`
   padding: 3px;
   border: 2px solid ${Color.pink.main};
   border-radius: 1px;
+  z-index: 10;
   ${mq("min", "md")} {
     &:hover {
       background: ${Color.white.dark};
@@ -58,21 +49,18 @@ const tagLink = css`
     }
   }
 `;
-
-const TagModule = (props) => {
-  const tagArray = props.content;
-  tagArray.sort(sortFunc);
-
+const Tag = ({ tags }) => {
+  const sortedTags = tagSort(tags);
   return (
     <div css={tagWrap}>
       <FontAwesomeIcon icon={faTags} />
       <ul css={tagList}>
-        {tagArray.map((v, i) => {
-          const slug = "/blog/tags/" + v;
+        {sortedTags.map((tag) => {
+          const slug = "/blog/tags/" + tag;
           return (
-            <li key={i} css={tagItem}>
+            <li key={tag} css={tagItem}>
               <Link css={tagLink} to={slug}>
-                {v}
+                {tag}
               </Link>
             </li>
           );
@@ -82,4 +70,4 @@ const TagModule = (props) => {
   );
 };
 
-export default TagModule;
+export default Tag;

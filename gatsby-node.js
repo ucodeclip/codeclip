@@ -91,6 +91,7 @@ exports.onCreateWebpackConfig = ({
         pages: path.resolve(__dirname, "src/pages"),
         styles: path.resolve(__dirname, "src/styles"),
         templates: path.resolve(__dirname, "src/template"),
+        utils: path.resolve(__dirname, "src/utils"),
       },
     },
   });
