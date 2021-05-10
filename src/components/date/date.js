@@ -9,7 +9,6 @@ library.add({ faCalendar, faRedo });
 const dateWrap = css`
   color: inherit;
   display: flex;
-  margin-top: 10px;
 `;
 const dateItem = css`
   display: flex;
@@ -29,10 +28,7 @@ const itemDate = css`
   font-size: 1.4rem;
 `;
 
-const UpDate = ({ date, update }) => {
-  if (date === update) {
-    return null;
-  }
+const UpDate = ({ update }) => {
   return (
     <div data-type="update" css={dateItem}>
       <FontAwesomeIcon icon={faRedo} />
@@ -41,18 +37,16 @@ const UpDate = ({ date, update }) => {
   );
 };
 
-const DateModule = ({ date, update }) => {
+const Date = ({ date, update }) => {
   return (
     <div css={dateWrap}>
-      <div css={dateItem}>
+      <div data-type="publish" css={dateItem}>
         <FontAwesomeIcon icon={faCalendar} />
-        <span data-type="publish" css={itemDate}>
-          {date}
-        </span>
+        <span css={itemDate}>{date}</span>
       </div>
-      <UpDate date={date} update={update} />
+      {date !== update && <UpDate update={update} />}
     </div>
   );
 };
 
-export default DateModule;
+export default Date;

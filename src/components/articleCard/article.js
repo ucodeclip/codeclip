@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
 import { css } from "@emotion/react";
-import Tag from "components/articleCard/tag";
-import Date from "components/articleCard/date";
+import Tag from "components/tag/tag";
+import Date from "components/date/date";
 import { Color } from "constants/constants";
 import { mq } from "styles/styled-function";
 
@@ -54,6 +54,10 @@ const articleLink = css`
   z-index: 5;
 `;
 
+const dateWrap = css`
+  margin-top: 10px;
+`;
+
 const ArticleModule = (props) => {
   const slug = "/blog/" + props.content.node.frontmatter.slug;
   const formatter = props.content.node.frontmatter;
@@ -61,15 +65,17 @@ const ArticleModule = (props) => {
   const text = props.content.node.excerpt;
   const date = formatter.date;
   const update = formatter.update;
-  const tag = formatter.tag;
+  const tags = formatter.tag;
 
   return (
     <article css={article}>
       <Link css={articleLink} to={slug}></Link>
       <h2 css={articleTitle}>{title}</h2>
       <p css={articleText}>{text}</p>
-      <Date date={date} update={update} />
-      <Tag content={tag} />
+      <div css={dateWrap}>
+        <Date date={date} update={update} />
+      </div>
+      <Tag tags={tags} />
     </article>
   );
 };
