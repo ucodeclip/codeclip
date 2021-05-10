@@ -7,8 +7,8 @@ import Seo from "components/seo/seo";
 import Article from "components/articleCard/article";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-library.add(faTwitter);
+import { faTwitter, faGithub } from "@fortawesome/free-brands-svg-icons";
+library.add(faTwitter, faGithub);
 
 const main = css`
   position: relative;
@@ -54,15 +54,24 @@ const sns = css`
   right: 0;
   bottom: 20px;
 `;
-const twt = css`
+const icon = css`
+  position: relative;
   display: inline-block;
   width: 30px;
   height: 30px;
-  color: ${Color.blue.twitter};
   font-size: 3rem;
   svg {
     display: block;
   }
+  &:nth-of-type(n + 2) {
+    margin-left: 15px;
+  }
+`;
+const twt = css`
+  color: ${Color.blue.twitter};
+`;
+const github = css`
+  color: ${Color.white.main};
 `;
 const articleList = css`
   box-sizing: border-box;
@@ -88,7 +97,15 @@ const IndexPage = ({ data }) => {
           </div>
           <div css={sns}>
             <a
-              css={twt}
+              css={[github, icon]}
+              href="https://github.com/ucodeclip"
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon={faGithub} />
+            </a>
+            <a
+              css={[twt, icon]}
               href="https://twitter.com/blog_clip"
               rel="noreferrer"
               target="_blank"
