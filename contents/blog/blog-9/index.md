@@ -189,7 +189,7 @@ const reducer = (state, action) => {
         [action.field]: nextValue,
       };
     default:
-      throw Error();
+      throw new Error();
   }
 };
 
