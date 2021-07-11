@@ -2,7 +2,14 @@ import React from "react";
 import { Global, css } from "@emotion/react";
 const global = css`
   html,
-  body,
+  body {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 62.5%;
+    vertical-align: bottom;
+  }
   div,
   span,
   applet,
@@ -86,13 +93,8 @@ const global = css`
     padding: 0;
     border: 0;
     font: inherit;
-    line-height: 1.5;
-    font-size: 10px;
-    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN",
-      "Hiragino Sans", Meiryo, sans-serif;
-    letter-spacing: 0.04em;
+    font-size: 1.6rem;
     vertical-align: bottom;
-    color: #232946;
   }
   article,
   aside,

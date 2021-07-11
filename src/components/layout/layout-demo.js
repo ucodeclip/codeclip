@@ -1,8 +1,9 @@
 import React from "react";
 import { css } from "@emotion/react";
-import Header from "../header/header";
-import Footer from "../footer/footer";
-import StyledReset from "../../styles/styled-reset";
+import Header from "components/header/header";
+import Footer from "components/footer/footer";
+import StyledReset from "styles/styled-reset";
+import StyledBase from "styles/styled-base";
 import { Color } from "constants/constants";
 
 const wrapper = css`
@@ -16,6 +17,7 @@ const contents = css`
   background: ${Color.gray.dark};
   box-sizing: border-box;
   width: 90%;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 60px 0;
 `;
@@ -24,6 +26,7 @@ const layoutDemo = ({ children }) => {
   return (
     <div css={wrapper} data-page={"demo"}>
       <StyledReset />
+      <StyledBase />
       <Header page={"demo"} />
       <div css={contents}>{children}</div>
       <Footer />
