@@ -46,27 +46,26 @@ const Index = () => {
         description="【Demoページ】useEffectの第二引数の配列を空にするとstateが更新されない件　解決ver"
         type="article"
       />
-      <div className={styles.main}>
-        <h1 className={styles.title}>
-          useEffectの第二引数の配列を空にするとstateが更新されない件 解決ver
-        </h1>
-        <p className={styles.selected}>fruit: {fruit}</p>
-        {loading ? (
-          <p>Loading...</p>
-        ) : (
-          <div className={styles.btns}>
-            <button onClick={selectFruit} data-fruit="orange">
-              orange
-            </button>
-            <button onClick={selectFruit} data-fruit="apple">
-              apple
-            </button>
-            <button onClick={selectFruit} data-fruit="banana">
-              banana
-            </button>
-          </div>
-        )}
-      </div>
+
+      <h1 className={styles.title}>
+        useEffectの第二引数の配列を空にするとstateが更新されない件 解決ver
+      </h1>
+      <p className={styles.selected}>fruit: {fruit}</p>
+      {loading ? (
+        <p>Loading...</p>
+      ) : (
+        <div className={styles.btns}>
+          <button onClick={selectFruit} data-fruit="orange">
+            orange
+          </button>
+          <button onClick={selectFruit} data-fruit="apple">
+            apple
+          </button>
+          <button onClick={selectFruit} data-fruit="banana">
+            banana
+          </button>
+        </div>
+      )}
     </LayoutDemo>
   );
 };
