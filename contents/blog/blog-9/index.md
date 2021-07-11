@@ -89,6 +89,7 @@ const useStateForm = () => {
       name: name,
       age: age,
       email: email,
+      isPublic: isPublic,
     };
     alert(JSON.stringify(obj));
   };
