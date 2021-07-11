@@ -8,6 +8,9 @@ const global = css`
     line-height: 1.5;
     letter-spacing: 0.04em;
   }
+  strong {
+    font-weight: bold;
+  }
 `;
 
 const StyledBase = () => {
