@@ -88,7 +88,7 @@ module.exports = {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://codeclip.netlify.app/",
-        sitemap: "https://codeclip.netlify.app/sitemap.xml",
+        sitemap: "https://codeclip.netlify.app/sitemap/sitemap-index.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
