@@ -9,7 +9,6 @@ module.exports = {
     siteUrl: `https://codeclip.netlify.app/`,
   },
   plugins: [
-    `gatsby-plugin-sitemap`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-catch-links`,
@@ -84,11 +83,12 @@ module.exports = {
         trackingId: "UA-166798468-1",
       },
     },
+    `gatsby-plugin-advanced-sitemap`,
     {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://codeclip.netlify.app/",
-        sitemap: "https://codeclip.netlify.app/sitemap/sitemap-index.xml",
+        sitemap: "https://codeclip.netlify.app/sitemap.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
