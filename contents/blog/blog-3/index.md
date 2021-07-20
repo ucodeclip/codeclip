@@ -9,21 +9,23 @@ tag:
 ---
 
 ## 概要
-GatsbyJSでスクールアニメーションの実装ついて、意外と情報が少なかったのでメモ。  
+
+GatsbyJS でスクールアニメーションの実装ついて、意外と情報が少なかったのでメモ。  
 今回はスクロールイベントを使ったスクロールアニメーションの実装になります。  
-スクロールアニメーションにはIntersectionObserverを使う方法もあるので、~~こちらについては後日書いていこうと思います~~。[こちら](/blog/post-4)に書きました。
+スクロールアニメーションには IntersectionObserver を使う方法もあるので、~~こちらについては後日書いていこうと思います~~。[こちら](/blog/post-4)に書きました。
 
 ## 前提
-- プラグインを使わない。  
-- スクロールイベントを使ってアニメーションする。  
-- IntersectionObserverについては扱わない。
+
+- プラグインを使わない。
+- スクロールイベントを使ってアニメーションする。
+- IntersectionObserver については扱わない。
 
 ## スクロールイベントを扱う
+
 スクロールイベントの動作確認のために、まずはスクロール量の取得を行ってみます。  
-GatsbyJSでスクロールイベントを使用するには`addEventListener()`メソッドを用いて、スクロールイベントを登録します。  
+GatsbyJS でスクロールイベントを使用するには`addEventListener()`メソッドを用いて、スクロールイベントを登録します。  
 ページ離脱時に`removeEventListener()`メソッドで、忘れずにイベントの削除をしましょう。  
 でないと、ページを遷移後もスクロールイベントが発火し続けてしまいます。
-
 
 ```js:title=index.js
 import React, { useState, useEffect } from 'react';
@@ -101,10 +103,11 @@ export default Demo1
 [スクロール量取得のデモページはこちら](https://codeclip.netlify.app/demo/demo-1/)
 
 ## スクロールアニメーションの実装
+
 スクロールイベントの確認ができたら、スクロールアニメーションを実装します。  
 まずはアニメーションするコンポーネントの作成を行います。  
-`useRef()`を使ってDOMを参照し、DOMの位置を取得しましょう。  
-`useState()`を利用してclass名を管理します。
+`useRef()`を使って DOM を参照し、DOM の位置を取得しましょう。  
+`useState()`を利用して class 名を管理します。
 
 ```js:title=index-2.js
 const ScrollComponent = ({children}) => {
@@ -269,9 +272,11 @@ export default Demo2
 [スクロールアニメーションのデモページはこちら](https://codeclip.netlify.app/demo/demo-1/index-2)
 
 ## まとめ
-当たり前ですが、GatsbyJSではページ遷移でリロードが生じないので、マウント時にスクロールイベントの登録を行います。  
+
+当たり前ですが、GatsbyJS ではページ遷移でリロードが生じないので、マウント時にスクロールイベントの登録を行います。  
 その際に`removeEventListener()`でイベントの削除記述も忘れないよう気をつけたいですね。  
-Intersection Observerを使ったスクロールアニメーションに関しては後日書いていこうと思います。
+Intersection Observer を使ったスクロールアニメーションに関しては後日書いていこうと思います。
 
 ## 追記
-[GatsbyJSでスクロールアニメーションを実装する(Intersection Observer編)](/blog/post-4)書きました。
+
+[GatsbyJS でスクロールアニメーションを実装する(Intersection Observer 編)](/blog/post-4)書きました。

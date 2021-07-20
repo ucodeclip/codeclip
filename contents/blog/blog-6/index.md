@@ -10,32 +10,38 @@ tag:
 ---
 
 ## 概要
-GatsbyJSでページ遷移アニメーションを実装する方法の後編になります。  
+
+GatsbyJS でページ遷移アニメーションを実装する方法の後編になります。  
 「[前編](/blog/post-5)」に引き続き、`Gatsby Plugin Transition Link`プラグインを使用したページ遷移アニメーションの実装になります。  
 今回は`TransitionLink`（カスタムアニメーション）の実装について書いていこうと思います。  
 また、アニメーション自体の実装には`GSAP`を採用しています。
 
 ## 前提
+
 - `Gatsby Plugin Transition Link`プラグインを使う
 - カスタマイズアニメーション(`TransitionLink`)のみを扱い、デフォルトに備わっているアニメーション(`AniLink`)に関しては「前編」で扱う
 - アニメーションの実装には`GSAP`を使う
 
 ## プラグインのインストール
+
 「[前編](/blog/post-5)」に書いてありますので、そちらをご参照ください。
 
-## TransitionLinkの実装
-まずは`TransitionLink`をimportします。
+## TransitionLink の実装
+
+まずは`TransitionLink`を import します。
+
 ```js
 import TransitionLink from "gatsby-plugin-transition-link";
 ```
 
-`TransitionLink`の基本的な使い方ですが、`to`、`exit`、`entry`の3つのプロパティを持たせることができます。
+`TransitionLink`の基本的な使い方ですが、`to`、`exit`、`entry`の 3 つのプロパティを持たせることができます。
+
 - `to` : リンク先
 - `exit` : 現在のページに関することを定義する
 - `enty` : リンク先のページに関することを定義する
 
 `GSAP`等でアニメーションを定義しておき、下記のように`trigger`を用いて`entry`、`exit`内で関数を発火させます。  
-`entry`、`exit`にはlengthやdelayといったプロパティを持たせることができます。
+`entry`、`exit`には length や delay といったプロパティを持たせることができます。
 
 ```js
 <TransitionLink
@@ -45,22 +51,21 @@ import TransitionLink from "gatsby-plugin-transition-link";
     // nodeで現在のページがラップされたdomを取得できる
     // lengthでアニメーションの長さを指定
     trigger: ({ node }) => ExitAnimation(node),
-    length: 1
+    length: 1,
   }}
   entry={{
     // 飛び先のページ
     // nodeでリンク先のページがラップされたdomを取得できる
     // delayでページ遷移までの遅延を指定
     trigger: ({ node }) => EntryAnimation(node),
-    delay: 0.6
+    delay: 0.6,
   }}
 >
   TransitionLink-2へ
 </TransitionLink>
 ```
 
-では、実際に実装してみます。  
-
+では、実際に実装してみます。
 
 ```js:title=TransitionLink-1.js
 import React from 'react';
@@ -187,27 +192,29 @@ export default TransitionLink2;
   }
 }
 ```
-[TransitionLinkのデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionLink-1)
 
-## TransitionStateの実装
+[TransitionLink のデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionLink-1)
+
+## TransitionState の実装
+
 `TransitionState`を使用するとページ内もしくはコンポーネント内の任意の場所で遷移状態を取得することができます。  
-言葉にするとわかりづらいですが、要するに一部のコンポーネントだけ別のアニメーションを適応させることができるようになります。  
+言葉にするとわかりづらいですが、要するに一部のコンポーネントだけ別のアニメーションを適応させることができるようになります。
 
-なにはともあれ、まずはimportします。
+なにはともあれ、まずは import します。
 
 ```js
 import { TransitionState } from "gatsby-plugin-transition-link";
 ```
 
-`TransitionState`で取得できる状態は、`entering`、`entered`、`exiting`、`exited`の4種類になります。  
+`TransitionState`で取得できる状態は、`entering`、`entered`、`exiting`、`exited`の 4 種類になります。
 
 - `entering` : 出現中
 - `entered` : 出現
 - `exiting` : 消失中
 - `exited` : 消失
 
-また上記4種類の状態とは別に`mount`を取得することができます。  
-`mount`ではマウントされたか・されていないかをtrue・falseで取得します。
+また上記 4 種類の状態とは別に`mount`を取得することができます。  
+`mount`ではマウントされたか・されていないかを true・false で取得します。
 
 ```js
 const TransitionTarget = ({mount,transitionStatus}) => {
@@ -226,7 +233,7 @@ const TransitionTarget = ({mount,transitionStatus}) => {
 </TransitionState>
 ```
 
-基本的な使い方は上記のよう形になると思います。  
+基本的な使い方は上記のよう形になると思います。
 
 `mount`、`transitionStatus`に、いつどのような値が渡ってくるのか確かめて見ましょう。
 
@@ -403,11 +410,11 @@ export default TransitionState2;
 }
 ```
 
-[TransitionStateのデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionState-1)
+[TransitionState のデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionState-1)
 
 上記デモページでも実際に渡ってくる値が確認できると思います。
 
-## TransitionStateを用いたアニメーションの実装
+## TransitionState を用いたアニメーションの実装
 
 では、実際に`TransitionState`を用いてアニメーションを実装しましょう。
 
@@ -607,15 +614,16 @@ export default TransitionStateAnimation2;
 }
 ```
 
-[TransitionStateAnimationのデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionStateAnimation-1)
+[TransitionStateAnimation のデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionStateAnimation-1)
 
-## TransitionPortalの実装
-`TransitionPortal`はページ遷移前と遷移後で共通の要素を使いたい時に使用します。  
+## TransitionPortal の実装
 
-まずは、importを忘れずに。
+`TransitionPortal`はページ遷移前と遷移後で共通の要素を使いたい時に使用します。
+
+まずは、import を忘れずに。
 
 ```js
-import {TransitionPortal} from "gatsby-plugin-transition-link";
+import { TransitionPortal } from "gatsby-plugin-transition-link";
 ```
 
 ```js
@@ -630,7 +638,7 @@ const CommonParts = () => {
 ```
 
 基本的な使い方は上記の形になります。  
-共通で使いたい部分を`TransitionPortal`でラップするだけです。  
+共通で使いたい部分を`TransitionPortal`でラップするだけです。
 
 使い方がわかったところで、実装してみましょう。
 
@@ -803,12 +811,12 @@ export default TransitionPortal2;
 }
 ```
 
-[TransitionPortalのデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionPortal-1)
+[TransitionPortal のデモページ](https://codeclip.netlify.app/demo/demo-6/TransitionPortal-1)
 
 ページ遷移の前後で共通のレイヤーが上に覆いかぶさっているのがわかると思います。
 
-
 ## まとめ
+
 `TransitionLink`を使うことによってオリジナルのアニメーションを簡単に実装することができました。  
 今回は基本的な機能について書きましたが、このブログで紹介した機能以外にも色々あるのでぜひ使ってみてください。
 

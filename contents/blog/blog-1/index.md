@@ -9,14 +9,17 @@ tag:
 ---
 
 ## ブログ作りました
+
 エンジニアはブログを書いた方がいいと聞いたので、暇潰しがてら、[GatsbyJS](https://www.gatsbyjs.org/)と[Netlify](https://www.netlify.com/)を使ってブログ作ってみました。  
-最初の投稿として何を書こうか迷ったのですが、せっかくなのでGatsbyJSとNetlifyを使った【爆速サイトの公開】を簡単に書いていこうと思います。
+最初の投稿として何を書こうか迷ったのですが、せっかくなので GatsbyJS と Netlify を使った【爆速サイトの公開】を簡単に書いていこうと思います。
 
 ## 概要
-表題の通りですが、GatsbyJSで作り、Netlifyでホスティングします。とりあえず公開するだけなら基本無料なので、安心です。
 
-## GastbyJSのインストール
-なにはともあれ、GatsbyJSのインストール。
+表題の通りですが、GatsbyJS で作り、Netlify でホスティングします。とりあえず公開するだけなら基本無料なので、安心です。
+
+## GastbyJS のインストール
+
+なにはともあれ、GatsbyJS のインストール。
 
 ```bash:title=shell
 npm install -g gatsby-cli
@@ -36,20 +39,23 @@ Gatsby version: 2.21.20
 ```
 
 ## サイトの作成
-GatsbyJSには多くのスターターが用意されています。詳しくは[こちら](https://www.gatsbyjs.org/starters/?v=2)参照。
+
+GatsbyJS には多くのスターターが用意されています。詳しくは[こちら](https://www.gatsbyjs.org/starters/?v=2)参照。
 
 ```bash:title=shell
 gatsby new codeclip https://github.com/gatsbyjs/gatsby-starter-default
 ```
 
-スターターは多くあるのですが、今回はデフォルトスターターを選択しました。`codeclip`の部分には作成するプロジェクトの名前、`https://github.com/gatsbyjs/gatsby-starter-default`の部分には自分で選んだスターターのurlを設定します。ちなみにデフォルトスターターの場合はurlの省略可能です。
+スターターは多くあるのですが、今回はデフォルトスターターを選択しました。`codeclip`の部分には作成するプロジェクトの名前、`https://github.com/gatsbyjs/gatsby-starter-default`の部分には自分で選んだスターターの url を設定します。ちなみにデフォルトスターターの場合は url の省略可能です。
 
 サイトを作成したらディレクトリを移動し、
+
 ```bash:title=shell
 cd　codeclip
 ```
 
 開発用サーバーを立ち上げます。
+
 ```bash:title=shell
 npm run start
 ```
@@ -59,6 +65,7 @@ npm run start
 ![開発サーバー](image-1.png)
 
 開発用サーバーが確認できたら今度はプロジェクトをビルドします。
+
 ```bash:title=shell
 npm run build
 ```
@@ -66,6 +73,7 @@ npm run build
 ビルドをすると`codeclip/public`にビルドされたファイルが出力されます。
 
 ビルドされたファイルをローカルで確かめます。
+
 ```bash:title=shell
 npm run serve
 ```
@@ -74,10 +82,11 @@ npm run serve
 
 無事表示されればサイトの完成です。
 
-## NetlifyとGitの連携
-まずはGithub,GitLab,Bitbucketなどのgitホスティングサービスを使ってリポジトリを作ります。（Gitに関しては割愛）
+## Netlify と Git の連携
 
-リポジトリを作成したらプロジェクトをコミットして、[Netlify](https://www.netlify.com/)と連携します。Netlifyのサイトに飛んだらSign Upをクリックして使用しているGitホスティングサービス（Github,GitLab,Bitbucketいずれか）を選びましょう。
+まずは Github,GitLab,Bitbucket などの git ホスティングサービスを使ってリポジトリを作ります。（Git に関しては割愛）
+
+リポジトリを作成したらプロジェクトをコミットして、[Netlify](https://www.netlify.com/)と連携します。Netlify のサイトに飛んだら Sign Up をクリックして使用している Git ホスティングサービス（Github,GitLab,Bitbucket いずれか）を選びましょう。
 
 ![登録画面](image-2.jpg)
 
@@ -87,8 +96,8 @@ npm run serve
 
 ![登録画面](image-4.png)
 
-- Build commandに`gatsby build`
-- Publish directoryに`public/`
+- Build command に`gatsby build`
+- Publish directory に`public/`
 
 を入力します。
 
@@ -98,18 +107,21 @@ npm run serve
 
 ## 公開の確認
 
-Deployが完成したらOverviewから公開サイトのURLが確認できます。
+Deploy が完成したら Overview から公開サイトの URL が確認できます。
 
 ![管理画面](image-6.jpg)
 
 これで無事サイトが公開されました。
 
 ## サイトの更新
+
 登録しているブランンチにコミット、マージなどで変更があると自動的にデプロイが走ります。便利ですね。
 
 ## まとめ
+
 簡単にサイトを作成、公開することができました。時間としても上記手順だけなら一時間もいらないと思います。爆速サイト公開ですね。  
 今回はただサイトの公開ということで、更新性のあるブログの作り方までには触れなかったのですが、今後どこかでマークダウンファイルを使ったブログの作り方に関しても書いていこうと思います。
 
 ## 参考
+
 [Gatsby Quick Start](https://www.gatsbyjs.org/docs/quick-start)

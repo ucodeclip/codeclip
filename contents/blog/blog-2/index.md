@@ -8,17 +8,20 @@ tag:
 ---
 
 ## 概要
-GatsbyJSでタグ機能を実装したので、その手順をメモします。
+
+GatsbyJS でタグ機能を実装したので、その手順をメモします。
 
 ## 前提
-- 記事の一覧をGraphQLから取得できる
-- `gatsby-transformer-remark`のプラグインでmd(マークダウン)ファイルを使用している
 
-## md（マークダウン）ファイルにtagの項目を作る
-md（マークダウン）ファイルの最初の部分にメタ情報としてtitle項目とtag項目の記述します。  
-ちなみにこのメタ情報のブロックのことを`Front-matter`と言うらしいです.  
+- 記事の一覧を GraphQL から取得できる
+- `gatsby-transformer-remark`のプラグインで md(マークダウン)ファイルを使用している
 
-今回はタグ一覧ページで絞り込みができているか確認するためmd（マークダウン）ファイルを二つ作成します。  
+## md（マークダウン）ファイルに tag の項目を作る
+
+md（マークダウン）ファイルの最初の部分にメタ情報として title 項目と tag 項目の記述します。  
+ちなみにこのメタ情報のブロックのことを`Front-matter`と言うらしいです.
+
+今回はタグ一覧ページで絞り込みができているか確認するため md（マークダウン）ファイルを二つ作成します。  
 タグが複数ある場合は下記のように記述します。
 
 ```yaml:title=index.md
@@ -40,7 +43,8 @@ tag:
 ```
 
 ## タグの抽出
-まずはGraphQLのgroup機能を使ってmd（マークダウン）ファイルに記述してあるタグを全て抽出します。
+
+まずは GraphQL の group 機能を使って md（マークダウン）ファイルに記述してあるタグを全て抽出します。
 
 ```js:title=gatsby-node.js
 exports.createPages = async ({ graphql }) => {
@@ -59,7 +63,7 @@ exports.createPages = async ({ graphql }) => {
 }
 ```
 
-gatsyby-nodeに上の記述を行ってからbuildをすると、
+gatsyby-node に上の記述を行ってから build をすると、
 
 ```json:title=shell
 {
@@ -77,9 +81,10 @@ gatsyby-nodeに上の記述を行ってからbuildをすると、
 
 タグの配列が返ってきてることがわかります。
 
-## gatsby-nodeを使用してタグの一覧ページを作る
-gatsby-node.jsを使用してタグの一覧ページを作っていきます。  
-抽出したタグからcreatePageを使ってページをタグごとの一覧ページを作成します。
+## gatsby-node を使用してタグの一覧ページを作る
+
+gatsby-node.js を使用してタグの一覧ページを作っていきます。  
+抽出したタグから createPage を使ってページをタグごとの一覧ページを作成します。
 
 ```js:title=gatsby-node.js
 const path = require('path')
@@ -114,9 +119,10 @@ exports.createPages = async ({ graphql, actions }) => {
 }
 ```
 
-## templateファイルを準備する
-クエリーのfilterでタグの絞り込みをします。  
-gatsby-nodeのcontextから受け取った値を使います。
+## template ファイルを準備する
+
+クエリーの filter でタグの絞り込みをします。  
+gatsby-node の context から受け取った値を使います。
 
 ```js:title=/src/tempalte/temp.js
 import React from "react"
@@ -164,13 +170,13 @@ export const query = graphql`
 export default ArchivePage
 ```
 
-ここまで記述したら、開発サーバーを立ち上げ  
+ここまで記述したら、開発サーバーを立ち上げ
 
 `http://localhost:8000/blog/tags/TagA`  
 `http://localhost:8000/blog/tags/TagB`  
-`http://localhost:8000/blog/tags/TagC`  
+`http://localhost:8000/blog/tags/TagC`
 
-にアクセスします。  
+にアクセスします。
 
 ![TagA](img-1.png)
 ![TagB](img-2.png)
@@ -178,5 +184,6 @@ export default ArchivePage
 タグで絞り込んだ記事タイトル一覧が表示されていれば完成です。
 
 ## まとめ
-gatsby-nodeとGraphQLのgroup機能を使うことによって簡単にタグ機能の実装ができました。  
+
+gatsby-node と GraphQL の group 機能を使うことによって簡単にタグ機能の実装ができました。  
 カテゴリ機能も同様な感じで実装できると思います。

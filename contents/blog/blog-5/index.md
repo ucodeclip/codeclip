@@ -10,21 +10,23 @@ tag:
 ---
 
 ## 概要
-GatsbyJSでページ遷移アニメーションの実装する方法についてです。  
+
+GatsbyJS でページ遷移アニメーションの実装する方法についてです。  
 ちょっと長くなったので「前編」・「後編」にわけました。  
 ページ遷移アニメーションにもいくつかの選択肢があるみたいですが、今回は`Gatsby Plugin Transition Link`のプラグインを使用しました。  
-またアニメーション自体の実装には`GSAP`を採用しています。  
+またアニメーション自体の実装には`GSAP`を採用しています。
 
 `Gatsby Plugin Transition Link`にはデフォルトに備わっているアニメーション（`AniLink`）を使用する方法と、自分でカスタマイズしたアニメーションを実装する方法(`TransitionLink`)があるのですが、この記事は「前編」ということで`AniLink`について解説していきます。  
 `TransitionLink`については~~「後編」に書いていこうと思います。~~「[後編](/blog/post-6)」書きました。
 
-
 ## 前提
+
 - `Gatsby Plugin Transition Link`プラグインを使う
 - デフォルトに備わっているアニメーション(`AniLink`)のみを扱い、カスタマイズアニメーション(`TransitionLink`)に関しては「後編」で扱う
 - アニメーションの実装には`GSAP`を使う
 
 ## プラグインのインストール
+
 なにはともあれ、まずはプラグインのインストール。  
 `Gatsby Plugin Transition Link`と`GSAP`をインストールします。  
 ※前編では`GSAP`を自分で実装することはないのですが、`AniLink`を使用する場合には必ず`GSAP`が必要になります。
@@ -45,23 +47,24 @@ module.exports = {
 
 これで準備は完了です。
 
-## AniLinkの実装
+## AniLink の実装
+
 `Gatsby Plugin Transition Link`には独自にページ遷移を実装するための機能がいくつかあります。  
 その中でも、もっとも簡単にページ遷移を実装する方法として`AniLink`が存在します。  
 `AniLink`は`Gatsby Plugin Transition Link`にデフォルトで備わっているページ遷移アニメーションを簡単に実装できるかわりに、細かいカスタマイズはできません。
 
-
-まずは`AniLink`をimportします。
+まずは`AniLink`を import します。
 
 ```js:title=AniLink-1.js
 import AniLink from "gatsby-plugin-transition-link/AniLink";
 ```
 
-`AniLink`のページ遷移には下記の四つの種類があります。  
+`AniLink`のページ遷移には下記の四つの種類があります。
+
 - painDrop : クリックしたところから円のアニメーションが出現
-- swipe    : ページがサイドにスライドする
-- cover    : ページを完全に覆うように要素が被さる
-- fade     : フェードで切り替わる
+- swipe : ページがサイドにスライドする
+- cover : ページを完全に覆うように要素が被さる
+- fade : フェードで切り替わる
 
 百聞は一件にしかずということで、実装例を見ていきましょう。
 
@@ -233,12 +236,15 @@ export default AniLink2;
 上記ページでアニメーションが動いてるのが確認できると思います。
 
 ## まとめ
+
 プラグインをインポートするだけで簡単にページ遷移アニメーションが実装できました。  
 ただ、`AniLink`では四種類のアニメーションしか表現できないので、自分でもう少し複雑なアニメーションを実装したい場合には`TransitionLink`という別の方法があります。
 `TransitionLink`に関しては近日中に「後編」で書いていこうと思います。
 
 ## 参考
-[Gatsby Plugin Transition Link : 公式Document](https://transitionlink.tylerbarnes.ca/)
+
+[Gatsby Plugin Transition Link : 公式 Document](https://transitionlink.tylerbarnes.ca/)
 
 ## 追記
+
 「[後編](/blog/post-6)」（`TransitionLink`編）書きました。

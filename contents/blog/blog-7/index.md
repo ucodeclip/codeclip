@@ -9,19 +9,22 @@ tag:
 ---
 
 ## 概要
-Cansvasと簡単な数学(sin,cos)を使って桜が降るアニメーションを実装したのでそのメモになります。
+
+Cansvas と簡単な数学(sin,cos)を使って桜が降るアニメーションを実装したのでそのメモになります。
 
 [完成デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/06/)
 
 ## 前提
-- 基本的なJavaScriptがわかる
-- 基本的なcanvasの描写
+
+- 基本的な JavaScript がわかる
+- 基本的な canvas の描写
 - 数学的な詳細は省く
 
 ## 桜の花びらの描写
+
 まずは桜の花びらの描写をしてみましょう。  
 桜の花びらをネットで調べると下のサイトがヒットしました。  
-[https://sites.google.com/site/cinderellajapan/huanocg/huano-qu-xian](https://sites.google.com/site/cinderellajapan/huanocg/huano-qu-xian)  
+[https://sites.google.com/site/cinderellajapan/huanocg/huano-qu-xian](https://sites.google.com/site/cinderellajapan/huanocg/huano-qu-xian)
 
 数学的なことは説明しません（できません）が、重要なのは以下の式っぽいです。
 
@@ -35,7 +38,7 @@ r0(x):=(-1)^mod(floor(n/pi*x),2)*(n/pi*x-floor(n/pi*x))+mod(floor(n/pi*x),2);
 r(x):=r0(x)+2*h(r0(x));
 ```
 
-これをJSで実装すると桜の花びらっぽくなるようなので、実際にJSに変換します。
+これを JS で実装すると桜の花びらっぽくなるようなので、実際に JS に変換します。
 
 ```js
 //ulim=0.8;
@@ -198,9 +201,11 @@ class Sakura {
 [デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/01/)
 
 ## 桜の花びらを降らせる
+
 それでは桜の花びらを実際に振らせていきましょう。
 
 ### 桜の花びらを上から下に移動する
+
 `requestAnimationFrame`を使用して桜の花びらを上から下に移動させます。
 
 ```js:title=index.js
@@ -325,10 +330,10 @@ class Sakura {
 
 [デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/02/)
 
-
 ### 回転させる
+
 これだけでは自然な動きとは程遠いので花びらに回転を加えます。  
-この時、`canvasのrotateメソッド`だけでなく花びらのy軸の大きさ(下記ソースコードでの`this.scaleY`の部分)を変動させることによって三次元に回転させるように見せることができます。
+この時、`canvasのrotateメソッド`だけでなく花びらの y 軸の大きさ(下記ソースコードでの`this.scaleY`の部分)を変動させることによって三次元に回転させるように見せることができます。
 
 ```js:title=index.js
 (function(){
@@ -453,10 +458,12 @@ class Sakura {
   }
 }
 ```
+
 [デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/03/)
 
 ### 横の移動に幅をつける
-次にx軸方向の移動に幅をつけます。  
+
+次に x 軸方向の移動に幅をつけます。  
 これによってゆらゆらを落ちてくる様子を実装できます。
 
 ```js:title=index.js
@@ -589,10 +596,11 @@ class Sakura {
   }
 }
 ```
+
 [デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/04/)
 
-
 ### ランダム性を持たせる
+
 だいぶ自然な動きに近くなってきました。  
 今度は大きさや位置にランダム性を持たせてみます。
 
@@ -729,10 +737,11 @@ class Sakura {
   }
 }
 ```
+
 [デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/05/)
 
-
 ## 桜の花びらを複数描写する
+
 最後に桜の花びらを複数描写します。
 
 ```js:title=index.js
@@ -879,12 +888,13 @@ class Sakura {
 }
 ```
 
-[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/06/)  
+[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/06/)
 
 以上で複数枚の桜の花びらを自然に降らせることができました。
 
 ## まとめ
-sin,cosを使用することによって自然なアニメーションを簡単に取り入れることができました。  
+
+sin,cos を使用することによって自然なアニメーションを簡単に取り入れることができました。  
 普段の生活で使うことはあまりないですが、数学・物理を取り入れることができれば、より様々な表現ができると思います。
 
 ## 参考
