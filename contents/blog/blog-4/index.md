@@ -9,20 +9,22 @@ tag:
 ---
 
 ## 概要
-[GatsbyJSでスクロールアニメーションを実装する(スクロールイベント編)](/blog/post-3)に引き続き、今回はIntersection Observerを用いたスクロールアニメーションの実装になります。  
-パフォーマンスを考えると多くの場面で、スクロールイベントよりIntersection Observerを使用した方法が推奨されています。
+
+[GatsbyJS でスクロールアニメーションを実装する(スクロールイベント編)](/blog/post-3)に引き続き、今回は Intersection Observer を用いたスクロールアニメーションの実装になります。  
+パフォーマンスを考えると多くの場面で、スクロールイベントより Intersection Observer を使用した方法が推奨されています。
 
 ## 前提
-- プラグインを使わない。  
-- Intersection Observer APIを使ってアニメーションする。  
+
+- プラグインを使わない。
+- Intersection Observer API を使ってアニメーションする。
 - スクロールイベントについては扱わない。
 
-## Intersection Obserberを扱う
+## Intersection Obserber を扱う
 
-Intersection observer APIは要素の交差を検知するAPIで、
-これを使用すると、ある要素（以下ターゲット）がルート要素（デフォルトでは端末のビューポート）と交差した時に処理を実行することができます。  
+Intersection observer API は要素の交差を検知する API で、
+これを使用すると、ある要素（以下ターゲット）がルート要素（デフォルトでは端末のビューポート）と交差した時に処理を実行することができます。
 
-交差を検知すると聞くとわかりづらいですが、要は指定した要素がビューポートに入った時（あるいは出た時）に何らかの処理を実行するよ、と言うことです。  
+交差を検知すると聞くとわかりづらいですが、要は指定した要素がビューポートに入った時（あるいは出た時）に何らかの処理を実行するよ、と言うことです。
 
 簡単に使用例を書きます。
 
@@ -48,8 +50,8 @@ const target = document.querySelector('#target');
 observer.observe(target)
 ```
 
-上記が通常のIntersection Observerの使用例です。  
-GatsbyJSでもDOMの取得方法が異なるくらいで、それ以外ではほとんど違いはありません。  
+上記が通常の Intersection Observer の使用例です。  
+GatsbyJS でも DOM の取得方法が異なるくらいで、それ以外ではほとんど違いはありません。
 
 ```js:title=index.js
 import React, { useState, useEffect, useRef } from 'react';
@@ -133,33 +135,33 @@ export default Demo1
 
 [デモはこちら](https://codeclip.netlify.app/demo/demo-4/)
 
-## Intersection Obserberのオブションについて
+## Intersection Obserber のオブションについて
 
-Intersection observerの作成時にオプションを渡すことができます。
+Intersection observer の作成時にオプションを渡すことができます。
 
 ```js
 let options = {
   root: null,
-  rootMargin: '0px',
-  threshold: 1.0
-}
+  rootMargin: "0px",
+  threshold: 1.0,
+};
 
-const observer = new IntersectionObserver(cb,options);
+const observer = new IntersectionObserver(cb, options);
 ```
 
 簡単に説明すると
+
 - root：ターゲット要素と交差するルート要素を指定できる。デフォルト（null）だとビューポート。
 - rootMargin: ターゲット要素とルート要素の交差範囲を調整できる。
 - threshold: ターゲットがどのくらい見えているかの割合を指定できる。
 
-詳細な情報を知りたい方は[MDNのIntersection Observer API](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API#Intersection_observer_options)の記事に載っていますので、そちらを参照ください。
-
+詳細な情報を知りたい方は[MDN の Intersection Observer API](https://developer.mozilla.org/ja/docs/Web/API/Intersection_Observer_API#Intersection_observer_options)の記事に載っていますので、そちらを参照ください。
 
 ## スクロールアニメーションの実装
 
 では実際の実装になります。  
 今回はビューポートの上下-10%の時点で、ターゲット要素の背景色を変える処理を発火させようと思います。  
-また処理の発火地点がわかりやすいように、上下の10%範囲の色を少し変えています。
+また処理の発火地点がわかりやすいように、上下の 10%範囲の色を少し変えています。
 
 ```js:title=index-2.js
 import React, { useState, useEffect, useRef } from 'react';
@@ -279,18 +281,18 @@ export default Demo2
 
 [デモはこちら](https://codeclip.netlify.app/demo/demo-4/index-2)
 
-## Polyfillについて
-Intersection Observerはそのままでは `IE11`、`iOS Safari`などで動きません。  
-IEならまだしも、iOS Safariを切ることにはなかなかの勇気が必要です。  
-なのでPolyfillで対応しましょう。
-npmで`intersection-observer`をインストールします。
+## Polyfill について
+
+Intersection Observer はそのままでは `IE11`、`iOS Safari`などで動きません。  
+IE ならまだしも、iOS Safari を切ることにはなかなかの勇気が必要です。  
+なので Polyfill で対応しましょう。
+npm で`intersection-observer`をインストールします。
 
 ```bash:title=shell
 npm install intersection-observer
 ```
 
 インストールを終えたら`gatsby-browser.js`を用いてインポートします。
-
 
 ```js:title=gatsby-browser.js
 // IntersectionObserver polyfill (Safari, IE)
@@ -301,11 +303,12 @@ export const onClientEntry = async () => {
 }
 ```
 
-これでIE11, iOS Safariでも動くようになっているはずです。
+これで IE11, iOS Safari でも動くようになっているはずです。
 
 ## まとめ
-Intersection Observerを使用したスクロールアニメーションの実装ができました。  
-冒頭にも書きましたが、スクロールイベントとIntersection Observerを比較した際、パフォーマンスの点で後者が優れているので特別な事情がない限りは積極的に使用していきましょう。  
+
+Intersection Observer を使用したスクロールアニメーションの実装ができました。  
+冒頭にも書きましたが、スクロールイベントと Intersection Observer を比較した際、パフォーマンスの点で後者が優れているので特別な事情がない限りは積極的に使用していきましょう。
 
 ## 参考
 

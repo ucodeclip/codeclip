@@ -195,7 +195,7 @@ const [fruit, setFruit] = useState("orange");
 
 //マウント時のみ実行
 useEffect(() => {
-  ws.current.addEventListener("message", e => {
+  ws.current.addEventListener("message", (e) => {
     // 初回レンダー時のfruit(orange)をキャプチャ
     if (fruit === e.data) {
       alert("Select different fruit.");
@@ -286,7 +286,7 @@ export default Index;
 const refFruit = useRef(fruit);
 
 // useRefで定義した変数を比較する
-ws.current.addEventListener("message", e => {
+ws.current.addEventListener("message", (e) => {
   if (refFruit.current === e.data) {
     alert("Select different fruit.");
   }
