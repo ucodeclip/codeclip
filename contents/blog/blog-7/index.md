@@ -12,7 +12,7 @@ tag:
 
 Cansvas と簡単な数学(sin,cos)を使って桜が降るアニメーションを実装したのでそのメモになります。
 
-[完成デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/06/)
+[完成デモはこちら](https://yend724.github.io/codeclip_sample/demo-7/06/)
 
 ## 前提
 
@@ -198,7 +198,7 @@ class Sakura {
 }
 ```
 
-[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/01/)
+[デモはこちら](https://yend724.github.io/codeclip_sample/demo-7/01/)
 
 ## 桜の花びらを降らせる
 
@@ -328,7 +328,7 @@ class Sakura {
 }
 ```
 
-[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/02/)
+[デモはこちら](https://yend724.github.io/codeclip_sample/demo-7/02/)
 
 ### 回転させる
 
@@ -459,7 +459,7 @@ class Sakura {
 }
 ```
 
-[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/03/)
+[デモはこちら](https://yend724.github.io/codeclip_sample/demo-7/03/)
 
 ### 横の移動に幅をつける
 
@@ -597,7 +597,7 @@ class Sakura {
 }
 ```
 
-[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/04/)
+[デモはこちら](https://yend724.github.io/codeclip_sample/demo-7/04/)
 
 ### ランダム性を持たせる
 
@@ -738,7 +738,7 @@ class Sakura {
 }
 ```
 
-[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/05/)
+[デモはこちら](https://yend724.github.io/codeclip_sample/demo-7/05/)
 
 ## 桜の花びらを複数描写する
 
@@ -888,7 +888,7 @@ class Sakura {
 }
 ```
 
-[デモはこちら](https://ucodeclip.github.io/codeclip_sample/demo-7/06/)
+[デモはこちら](https://yend724.github.io/codeclip_sample/demo-7/06/)
 
 以上で複数枚の桜の花びらを自然に降らせることができました。
 

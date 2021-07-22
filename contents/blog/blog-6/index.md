@@ -556,7 +556,7 @@ const TransitionStateAnimation2 = () => {
 export default TransitionStateAnimation2;
 ```
 
-```css:index.module.css
+```css:title=index.module.css
 .title {
   margin-top: 20px;
   font-size: 20px;

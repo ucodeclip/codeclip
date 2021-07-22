@@ -98,7 +98,7 @@ const IndexPage = ({ data }) => {
           <div css={sns}>
             <a
               css={[github, icon]}
-              href="https://github.com/ucodeclip"
+              href="https://github.com/yend724"
               rel="noreferrer"
               target="_blank"
             >
